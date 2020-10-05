@@ -36,6 +36,7 @@ class ImmortalsController < ApplicationController
   # DELETE /immortals/1
   def destroy
     @immortal.destroy
+    render json: {message: 'successful deletion'}
   end
 
   private

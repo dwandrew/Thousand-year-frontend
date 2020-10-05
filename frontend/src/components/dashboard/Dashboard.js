@@ -7,9 +7,8 @@ export class Dashboard extends Component {
     
     componentDidMount(){
         this.props.getImmortals()
+
     }
-    
-    
     
     render() {
         const { immortals } = this.props
@@ -24,6 +23,7 @@ export class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        ...state,
         immortals: state.immortal.immortals
     }
 }

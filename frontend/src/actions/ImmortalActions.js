@@ -42,7 +42,28 @@ export const getImmortals = () => {
         fetch(LOCALURL + 'immortals')
         .then(resp => resp.json())
         .then(immortals => {
-            dispatch({type: "GET_IMMORTALS", immortals})
+           dispatch({type: "GET_IMMORTALS", immortals})
         })
     }
-} 
+}
+
+export const getImmortal = (immortalId) => {
+    return(dispatch, getState) => {
+        fetch(LOCALURL + 'immortals/' + immortalId)
+        .then(resp => resp.json())
+        .then(immortal => 
+            dispatch({type: "GET_IMMORTAL", immortal})
+        )
+    }
+}
+
+export const deleteImmortal = (immortalId) => {
+    return (dispatch, getState) => {
+        fetch(LOCALURL + 'immortals/' + immortalId, {method: "DELETE"})
+        .then(resp => resp.json())
+        .then(resp => 
+            dispatch({type: "DELETE_IMMORTAL", immortalId})
+        )
+    }
+
+}
