@@ -1,13 +1,30 @@
 const initState ={
     immortals: [
-        {id: 1, name:"Thomas Wyatt", description: "Revolutionary from the peasents revolt"}, 
-        {id: 2, name:"Doran Appleby", description: "Occultist from south west englad"}, 
-        {id: 3, name:"Zophia", description:" A Romanian Sorcerror with unique blood"} 
+         
     ]
 }
 
 const immortalReducer = (state = initState, action) => {
-    return state
+    switch (action.type){
+        case "CREATE_IMMORTAL":
+        console.log('created Immortal: ', action.immortal)
+        return {
+            ...state,
+            immortals: [...state.immortals, action.immortal]
+        }
+        case "CREATE_IMMORTAL_ERROR":
+        alert(action.errors)
+        return state
+        case "GET_IMMORTALS":
+        console.log('got immortals from backend', action.immortals)
+        return {
+            ...state,
+            immortals: [...action.immortals]
+        }
+        default:
+        return state
+        }
+    
 }
 
 

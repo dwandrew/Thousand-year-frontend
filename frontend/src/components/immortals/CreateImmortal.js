@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createImmortal } from '../../actions/ImmortalActions'
 
 export class CreateImmortal extends Component {
     state = {
         name: '',
-        description: ''
+        description: '',
+        errors: ''
     }
 
     handleSubmit = e => {
         e.preventDefault()
         console.log(this.state)
+        this.props.createImmortal(this.state)
         this.setState({
             name: '',
-            description: ''
+            description: '',
+            errors: ''
         })
+        this.props.history.push('/')
     }
 
     handleChange = e => {
@@ -38,4 +44,10 @@ export class CreateImmortal extends Component {
     }
 }
 
-export default CreateImmortal
+const mapDispatchToProps = (dispatch) => {
+    return{
+        createImmortal: (immortal) => dispatch(createImmortal(immortal))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateImmortal)

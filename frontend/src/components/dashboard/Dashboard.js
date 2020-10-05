@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
 import ImmortalList from '../immortals/ImmortalList'
 import { connect } from 'react-redux'
+import { getImmortals } from '../../actions/ImmortalActions'
  
 export class Dashboard extends Component {
+    
+    componentDidMount(){
+        this.props.getImmortals()
+    }
+    
+    
+    
     render() {
         const { immortals } = this.props
         return (
@@ -20,4 +28,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Dashboard)
+const mapDispatchToProps =  (dispatch) => {
+    return{
+        getImmortals: () => dispatch(getImmortals())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

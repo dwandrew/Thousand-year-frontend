@@ -4,5 +4,5 @@ class User < ApplicationRecord
     validates :username, uniqueness: true
     validates :username, length: { minimum: 4 }
     
-    has_many :immortals
+    # has_many :immortals
 end

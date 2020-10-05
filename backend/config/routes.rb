@@ -8,4 +8,8 @@ Rails.application.routes.draw do
     resources :items, only: [:create, :show, :index, :destroy]
   end
 
+  resources :users do 
+    resources :immortals, only: [:create, :show, :index, :destroy] 
+  end
+
 end

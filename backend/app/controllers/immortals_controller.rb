@@ -20,7 +20,7 @@ class ImmortalsController < ApplicationController
     if @immortal.save
       render json: @immortal, status: :created, location: @immortal
     else
-      render json: @immortal.errors, status: :unprocessable_entity
+      render json: {status: 500, errors: @immortal.errors.full_messages }
     end
   end
 
