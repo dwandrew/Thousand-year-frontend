@@ -5,7 +5,7 @@ const SingedInLinks = () => {
     return (
 
             <ul>
-                <li><NavLink to='/createImmortal'> New Chronicle </NavLink></li>
+                <li><NavLink to='/create'> New Chronicle </NavLink></li>
                 <li><NavLink to='/'> Current Chronicles </NavLink></li>
                 <li><NavLink to='/'> Logout </NavLink></li>
             </ul>

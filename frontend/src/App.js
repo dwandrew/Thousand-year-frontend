@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css'
 import Navbar from './components/layout/Navbar'
 import Dashboard from './components/dashboard/Dashboard'
 import ImmortalDetails from './components/immortals/ImmortalDetails'
@@ -19,7 +20,7 @@ function App() {
           <Route exact path='/immortals/:id' component = {ImmortalDetails}/>
           <Route exact path='/signin' component = {SignIn}/>
           <Route exact path='/signUp' component = {SignUp}/>
-          <Route exact path='/createImmortal' component = {CreateImmortal}/>
+          <Route exact path='/create' component = {CreateImmortal}/>
         </Switch>
       </div>
     </BrowserRouter>

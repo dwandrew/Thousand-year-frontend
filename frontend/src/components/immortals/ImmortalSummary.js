@@ -1,11 +1,12 @@
 import React from 'react'
 
-export const ImmortalSummary = () => {
+export const ImmortalSummary = ({immortal}) => {
+
         return (
             <li>
-                <div>
-                    <h4>Kevin</h4>
-                    <p> Spooky scary Vampire</p>
+                <div key= {immortal.id} >
+                    <h4>{immortal.name}</h4>
+                    <p> {immortal.description}</p>
                 </div>
             </li>
         )

@@ -1,14 +1,16 @@
 import React from 'react'
 import ImmortalSummary from './ImmortalSummary'
 
-const ImmortalList =() => {
+const ImmortalList =({immortals}) => {
         return (
             <div>
                 <h3>List of Immortals</h3>
                 <ul>
-                    <ImmortalSummary/>    
-                    <ImmortalSummary/>    
-                    <ImmortalSummary/>    
+                    { immortals && immortals.map(immortal => {
+                        return (
+                            <ImmortalSummary immortal={immortal} key={immortal.id}/>
+                        )
+                    })}   
                 </ul>
             </div>
         )
