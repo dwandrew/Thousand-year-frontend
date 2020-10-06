@@ -45,16 +45,10 @@ export class SignIn extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        ...state,
-    }
-}
-
 const mapDispatchToProps = (dispatch) => {
     return{
         createSession: (userData) => dispatch(createSession(userData))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
+export default connect(null, mapDispatchToProps)(SignIn)
