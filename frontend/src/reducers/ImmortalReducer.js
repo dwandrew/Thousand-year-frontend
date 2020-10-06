@@ -2,13 +2,21 @@
     immortals: [],
     immortal:{
         name: '',
-        description: ''
-        }
+        description: '',
+        user_id: ''
+        },
+    loading: false
     }
 
 
 const immortalReducer = (state = initState, action) => {
     switch (action.type){
+
+        case 'LOADING_IMMORTAL':
+            return {
+                ...state,
+                loading: false
+            }
 
         case "CREATE_IMMORTAL":
         console.log('created Immortal: ', action.immortal)
@@ -22,20 +30,23 @@ const immortalReducer = (state = initState, action) => {
         return state
 
         case "GET_IMMORTALS":
-        console.log('got immortals from backend', action.immortals)
+        console.log('got immortals from backend', action.list)
         return {
             ...state,
-            immortals: [...action.immortals]
+            immortals: [...action.list],
+            loading: true
         }
 
         case "GET_IMMORTAL":
-            console.log('got immortal from backend', action.immortal)
+            console.log('got immortal from backend', action.singleImmortal)
             return {
                 ...state,
                 immortal: {
-                    name: action.immortal.name,
-                    description: action.immortal.description
-                }
+                    name: action.singleImmortal.name,
+                    description: action.singleImmortal.description,
+                    user_id: action.singleImmortal.user_id
+                },
+                loading: true
             }
 
         case "DELETE_IMMORTAL":

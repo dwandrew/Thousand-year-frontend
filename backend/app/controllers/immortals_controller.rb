@@ -3,20 +3,21 @@ class ImmortalsController < ApplicationController
 
   # GET /immortals
   def index
-    @immortals = Immortal.all
-
-    render json: @immortals
+    @user = User.find(params[:user_id])
+    @immortals = @user.immortals
+    render json: {immortals: @immortals, status: 200}
   end
 
   # GET /immortals/1
   def show
-    render json: @immortal
+    render json: {immortal: @immortal, status: 200}
   end
 
   # POST /immortals
   def create
-    @immortal = Immortal.new(immortal_params)
 
+    @user = User.find(params[:user_id])
+    @immortal = @user.immortals.build(immortal_params)
     if @immortal.save
       render json: @immortal, status: :created, location: @immortal
     else

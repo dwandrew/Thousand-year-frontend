@@ -18,10 +18,10 @@ export class ImmortalDetails extends Component {
     }
 
     render(){
-
     const id = this.props.match.params.id
     let content
-    if(this.props.immortal.name){
+    if (this.props.auth.logged_in){
+    if(this.props.immortal.name && this.props.auth.user.user.id === this.props.immortal.user_id){
     content = 
         <div id={id}>
             <h3>{this.props.immortal.name}</h3>
@@ -49,7 +49,8 @@ export class ImmortalDetails extends Component {
         { content = <div>
             <h1>No Immortal Of this ID on Database</h1>
         </div>}
-
+        }
+        else { content = <div><h1>Login to view Immortal Details</h1></div>}   
         return (
             content
         )
@@ -58,9 +59,11 @@ export class ImmortalDetails extends Component {
 
 const mapStateToProps = (state) =>{
     return {
+        ...state,
         immortal:{
             name: state.immortal.immortal.name,
-            description: state.immortal.immortal.description
+            description: state.immortal.immortal.description,
+            user_id:state.immortal.immortal.user_id
         }
     }
 }

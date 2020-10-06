@@ -1,4 +1,4 @@
 class Immortal < ApplicationRecord
     validates :name, presence: true
-    # belongs_to :user
+    belongs_to :user
 end

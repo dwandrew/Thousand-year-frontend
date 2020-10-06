@@ -1,9 +1,11 @@
 const LOCALURL = 'http://localhost:3001/'
 
+function loadingImmortal() {
+    return { type: "LOADING_IMMORTALS" }
+ } 
 
-export const createImmortal = (immortal) => {
+export const createImmortal = (immortal, user_id) => {
     return (dispatch, getState) => {
-
         const strongParams = {
             immortal: {
                 name: immortal.name,
@@ -12,7 +14,9 @@ export const createImmortal = (immortal) => {
             errors: ""
 
         }
-        fetch(LOCALURL + 'immortals', {
+        let address = LOCALURL + 'users/' + user_id + '/immortals'
+
+        fetch(address, {
             method: 'POST',
             headers: {
             "Accept": "application/json",
@@ -22,6 +26,7 @@ export const createImmortal = (immortal) => {
             })
             .then(resp => resp.json())
             .then(immortal => {
+
                 if(immortal.errors)
                  return dispatch({type: "CREATE_IMMORTAL_ERROR", errors: immortal.errors})
                 else
@@ -37,22 +42,30 @@ export const createImmortal = (immortal) => {
 } 
 
 
-export const getImmortals = () => {
+export const getImmortals = (user_id) => {
     return (dispatch, getState) => {
-        fetch(LOCALURL + 'immortals')
+        dispatch(loadingImmortal())
+        fetch(LOCALURL + 'users/' + user_id + '/immortals')
         .then(resp => resp.json())
         .then(immortals => {
-           dispatch({type: "GET_IMMORTALS", immortals})
+        if(immortals.status === 200){
+            let list = immortals.immortals
+           dispatch({ type: "GET_IMMORTALS", list})}
         })
     }
 }
 
 export const getImmortal = (immortalId) => {
     return(dispatch, getState) => {
+        dispatch(loadingImmortal())
         fetch(LOCALURL + 'immortals/' + immortalId)
         .then(resp => resp.json())
         .then(immortal => 
-            dispatch({type: "GET_IMMORTAL", immortal})
+            {if(immortal.status === 200){
+            let singleImmortal = immortal.immortal
+            dispatch({type: "GET_IMMORTAL", singleImmortal})
+            }
+        }
         )
     }
 }

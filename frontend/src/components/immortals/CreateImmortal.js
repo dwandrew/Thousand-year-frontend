@@ -11,14 +11,17 @@ export class CreateImmortal extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        console.log(this.state)
-        this.props.createImmortal(this.state)
+        let user_id = this.props.state.auth.user.user.id
+        console.log(this.state, user_id)
+        this.props.createImmortal(this.state, user_id)
         this.setState({
             name: '',
             description: '',
             errors: ''
         })
-        this.props.history.push('/')
+    }
+
+    componentDidUpdate(){
     }
 
     handleChange = e => {
@@ -44,10 +47,14 @@ export class CreateImmortal extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {state}
+}
+
 const mapDispatchToProps = (dispatch) => {
     return{
-        createImmortal: (immortal) => dispatch(createImmortal(immortal))
+        createImmortal: (immortal, id) => dispatch(createImmortal(immortal, id))
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateImmortal)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateImmortal)

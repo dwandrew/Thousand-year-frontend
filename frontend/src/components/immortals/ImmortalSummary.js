@@ -1,7 +1,8 @@
 import React from 'react'
+
 import { Link } from 'react-router-dom'
 
-export const ImmortalSummary = ({immortal}) => {
+export const ImmortalSummary = ({user_id, immortal}) => {
 
         return (
             <li>
@@ -12,5 +13,8 @@ export const ImmortalSummary = ({immortal}) => {
             </li>
         )
 }
+
+
+
 
 export default ImmortalSummary
