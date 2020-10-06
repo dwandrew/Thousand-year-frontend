@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createSession } from '../../actions/userActions'
 
 export class SignIn extends Component {
     state = {
         username: '',
         password: ''
+    }
+
+    componentDidMount(){
+
     }
 
     handleSubmit = e => {
@@ -12,6 +18,8 @@ export class SignIn extends Component {
             username: '',
             password: ''
         })
+        this.props.createSession(this.state)
+        this.props.history.push('/')
     }
 
     handleChange = e => {
@@ -37,4 +45,16 @@ export class SignIn extends Component {
     }
 }
 
-export default SignIn
+const mapStateToProps = (state) => {
+    return {
+        ...state,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        createSession: (userData) => dispatch(createSession(userData))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

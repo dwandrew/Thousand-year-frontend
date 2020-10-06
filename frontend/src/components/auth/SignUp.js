@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createUser } from '../../actions/userActions'
+
 
 export class SignUp extends Component {
     state = {
@@ -16,6 +19,8 @@ export class SignUp extends Component {
             password: '',
             password_confirmation: ''
         })
+        this.props.createUser(this.state)
+        this.props.history.push('/')
     }
 
     handleChange = e => {
@@ -45,4 +50,11 @@ export class SignUp extends Component {
     }
 }
 
-export default SignUp
+const mapDispatchToProps = (dispatch) => {
+    return{
+        createUser: (userData) => dispatch(createUser(userData))
+    }
+}
+
+
+export default connect(null, mapDispatchToProps)(SignUp)

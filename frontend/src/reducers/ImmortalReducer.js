@@ -1,11 +1,13 @@
-
-const immortalReducer = (state = {
+ const initState = {
     immortals: [],
     immortal:{
         name: '',
         description: ''
         }
-    }, action) => {
+    }
+
+
+const immortalReducer = (state = initState, action) => {
     switch (action.type){
 
         case "CREATE_IMMORTAL":

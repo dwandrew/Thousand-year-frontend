@@ -24,7 +24,8 @@ export class Dashboard extends Component {
 const mapStateToProps = (state) => {
     return {
         ...state,
-        immortals: state.immortal.immortals
+        immortals: state.immortal.immortals,
+        user: state.user
     }
 }
 
