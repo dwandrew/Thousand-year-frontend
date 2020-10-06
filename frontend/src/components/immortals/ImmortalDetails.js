@@ -25,7 +25,6 @@ export class ImmortalDetails extends Component {
     content = 
         <div id={id}>
             <h3>{this.props.immortal.name}</h3>
-            <h4>{id}</h4>
             <p>{this.props.immortal.description}</p>
             <ul>
                 <li>Skills</li>

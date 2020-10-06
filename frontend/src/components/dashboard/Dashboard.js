@@ -8,10 +8,6 @@ export class Dashboard extends Component {
         current_user:''
     }
     
-    componentDidMount(){
-       
-    }
-
     componentDidUpdate(){
         if (this.state.current_user === '' && this.props.state.auth.logged_in){
         this.setState({
@@ -45,10 +41,6 @@ export class Dashboard extends Component {
                 Log In to View Immortals
             </p>
         </div>}
-
-        return (
-           {content}
-        )
     }
 }
 

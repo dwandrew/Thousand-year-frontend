@@ -19,9 +19,7 @@ export class CreateImmortal extends Component {
             description: '',
             errors: ''
         })
-    }
-
-    componentDidUpdate(){
+        this.props.history.push('/')
     }
 
     handleChange = e => {
