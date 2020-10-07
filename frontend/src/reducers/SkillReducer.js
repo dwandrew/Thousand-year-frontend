@@ -10,7 +10,9 @@ const initState = {
 
 const skillReducer = (state = initState, action) => {
     switch (action.type){
-    
+    case "CREATE_SKILL":
+        return {...state,
+                skills:[...state.skills, action.skill]}      
     default:
         return state
     }       

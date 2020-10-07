@@ -8,7 +8,7 @@ const SkillList =({skills}) => {
                 <ul>
                     { skills && skills.map(skill => {
                         return (
-                            <SkillSummary skill = {skill} key={skill.id}/>
+                            <SkillSummary skill = {skill} key={skill.id} />
                         )
                     })}   
                 </ul>

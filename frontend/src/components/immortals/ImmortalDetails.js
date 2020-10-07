@@ -92,7 +92,7 @@ export class ImmortalDetails extends Component {
             content = <div>
                 <ImmortalEdit ceaseEditing = {this.ceaseEditing} state= {this.state}/>
                 <ul>
-                <li><SkillList skills={this.props.immortal.skills}/></li>
+                <li><SkillList skills={this.props.immortal.skills} /></li>
                 <br/>
                 <CreateSkill state = {this.state} skillSubmit={this.handleSkillSubmit}/>
                 <li>Characters</li>
