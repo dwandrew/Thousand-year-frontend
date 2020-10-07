@@ -3,8 +3,13 @@ class SkillsController < ApplicationController
 
   # GET /skills
   def index
+    if params[:immortal_id]
+      immortal = Immortal.find_by_id(params[:immortal_id])
+      @skills = immortal.skills
+    else
     @skills = Skill.all
-    render json: @skills
+    end
+    render json: @skills.sort_by{|e| e.name}
   end
 
   # GET /skills/1

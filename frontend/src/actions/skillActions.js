@@ -1,5 +1,8 @@
 const LOCALURL = 'http://localhost:3001/'
 
+function loadingSkills() {
+    return { type: "LOADING_SKILLS" }
+ } 
 
 export const createSkill = (skillData, id) => {
     return (dispatch) => {
@@ -70,4 +73,20 @@ export const editSkill = (skillData) => {
 
     }
 
+}
+
+export const getSkills = (id) => {
+    return (dispatch) =>{
+
+        fetch(LOCALURL +"immortals/" +id + '/skills')
+        .then(resp => resp.json())
+        .then(skills =>{
+            dispatch({type: 'GET_SKILLS', skills})
+        })
+
+
+
+
+
+    }
 }

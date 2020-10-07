@@ -5,12 +5,12 @@ class ImmortalsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @immortals = @user.immortals
-    render json: {immortals: @immortals, status: 200}
+    render json: {immortals: @immortals.sort_by{|e| e.name}, status: 200}
   end
 
   # GET /immortals/1
   def show
-    render json: {immortal: @immortal, status: 200, skills: @immortal.skills}
+    render json: {immortal: @immortal, status: 200, skills: @immortal.skills.sort_by{|e| e.name}}
   end
 
   # POST /immortals

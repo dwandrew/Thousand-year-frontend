@@ -4,12 +4,7 @@ import CreateSkill from './CreateSkill'
 
 export class SkillSummary extends Component{
     state = {
-        editing: false,
-        skill:{
-            name: '',
-            checked: false,
-            lost: false
-        }
+        editing: false
     }
 
     handleEdit = () => {
@@ -21,6 +16,7 @@ export class SkillSummary extends Component{
     render(){    
        let { skill } = this.props
        if (!this.state.editing){
+
     return (
             <li>
                 <div key= {skill.id} >
@@ -33,12 +29,9 @@ export class SkillSummary extends Component{
         )
     }
     else {
-        return <CreateSkill editing ={this.state.editing} editData={ skill } />
+        return <CreateSkill editing ={this.state.editing} editData={ skill } handleParentEdit = {this.handleEdit} />
     }
     }
 }
-
-
-
 
 export default connect()(SkillSummary)

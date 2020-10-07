@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createSkill, editSkill } from '../../actions/skillActions'
+import { createSkill, editSkill, getSkills } from '../../actions/skillActions'
 import { withRouter } from 'react-router-dom'
 
 
@@ -57,8 +57,10 @@ export class CreateSkill extends Component {
     handleEdit = (e) => {
         e.preventDefault()
         this.props.editSkill(this.state)
+        this.props.handleParentEdit()
+        this.props.getSkills(this.props.immortal.id)
         this.setState({
-            editing: false
+            editing: !this.state.editing
         }
         )
         this.props.history.push('/immortals/' + this.props.immortal.id)
@@ -73,11 +75,11 @@ export class CreateSkill extends Component {
             <label htmlFor='name'>Skill Name</label>
             <input type= 'text' name= 'name' value= {this.state.name} onChange = {this.handleChange} placeholder = "enter skill name"/>
             <br/>
-            <label htmlFor='lost'>Skill Lost</label>
-            <input type="checkbox" name= 'lost' value = {this.state.lost} checked = {this.state.lost} onChange = {this.handleChange}/>
-            <br/>
             <label htmlFor='checked'>Skill Checked</label>
             <input type="checkbox" name= 'checked' value = {this.state.checked} checked = {this.state.checked} onChange = {this.handleChange}/>
+            <br/>
+            <label htmlFor='lost'>Skill Lost</label>
+            <input type="checkbox" name= 'lost' value = {this.state.lost} checked = {this.state.lost} onChange = {this.handleChange}/>
             <br/>
             <button type='submit'>{this.state.editing ? "Edit Skill" : "Add Skill"}</button>
             </form>
@@ -97,7 +99,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) =>{
     return{
         createSkill: (skill, immortal_id) => dispatch(createSkill(skill, immortal_id)),
-        editSkill: (skill) => dispatch(editSkill(skill))
+        editSkill: (skill) => dispatch(editSkill(skill)),
+        getSkills: (immortal_id) => dispatch(getSkills(immortal_id))
     }
 }
 
