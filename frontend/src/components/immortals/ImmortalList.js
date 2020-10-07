@@ -8,7 +8,7 @@ const ImmortalList =({user_id, immortals}) => {
                 <ul>
                     { immortals && immortals.map(immortal => {
                         return (
-                            <ImmortalSummary user_id={user_id} immortal={immortal} key={immortal.id}/>
+                            <ImmortalSummary immortal={immortal} key={immortal.id}/>
                         )
                     })}   
                 </ul>

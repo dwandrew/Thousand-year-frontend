@@ -62,8 +62,7 @@ export const getImmortal = (immortalId) => {
         .then(resp => resp.json())
         .then(immortal => 
             {if(immortal.status === 200){
-            let singleImmortal = immortal.immortal
-            dispatch({type: "GET_IMMORTAL", singleImmortal})
+            dispatch({type: "GET_IMMORTAL", immortal})
             }
         }
         )

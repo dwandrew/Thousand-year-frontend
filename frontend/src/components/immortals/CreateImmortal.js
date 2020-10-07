@@ -29,10 +29,11 @@ export class CreateImmortal extends Component {
 
 
     render() {
+        if (this.props.user.logged_in){
         return (
-            <div>
+            <div className = "create_form">
                 <h2>Create New Immortal</h2>
-                <form className = "Immortal_Form" onSubmit ={this.handleSubmit}>
+                <form id = "immortal_form" onSubmit ={this.handleSubmit}>
                     <label htmlFor="name">Immortal Name</label>
                     <input type = 'text' id='name' name='name' value = {this.state.name} onChange = {this.handleChange} placeholder = "enter name"/>
                     <label htmlFor="description">Description</label>
@@ -40,7 +41,10 @@ export class CreateImmortal extends Component {
                     <button type= "submit">Create New Immortal</button>
                 </form>
             </div>
-        )
+        )}
+        else {
+            return ( <h2>Login to create Immortals</h2>)
+        }
     }
 }
 

@@ -10,7 +10,7 @@ class ImmortalsController < ApplicationController
 
   # GET /immortals/1
   def show
-    render json: {immortal: @immortal, status: 200}
+    render json: {immortal: @immortal, status: 200, skills: @immortal.skills}
   end
 
   # POST /immortals
@@ -28,7 +28,7 @@ class ImmortalsController < ApplicationController
   # PATCH/PUT /immortals/1
   def update
     if @immortal.update(immortal_params)
-      render json: @immortal
+      render json: {immortal: @immortal, status: 200, skills: @immortal.skills}
     else
       render json: @immortal.errors, status: :unprocessable_entity
     end

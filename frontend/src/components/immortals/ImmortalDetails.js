@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import { getImmortal, deleteImmortal, editImmortal } from  '../../actions/ImmortalActions'
+import CreateSkill from '../skills/CreateSkill'
+import SkillList from '../skills/SkillList'
 import { connect } from 'react-redux'
+import ImmortalEdit from './ImmortalEdit'
 
 export class ImmortalDetails extends Component {
     state = {
         name : '',
         description: '',
         editing: false,
-        id: ''
+        id: '',
+        skills:[]
     }
 
     componentDidMount(){
         let id = this.props.match.params.id
         this.props.getImmortal(id)
-        
     }
 
     handleDelete = (e) =>{
@@ -34,18 +37,24 @@ export class ImmortalDetails extends Component {
             editing: true,
             name: this.props.immortal.name,
             description: this.props.immortal.description,
-            id: this.props.immortal.id
+            id: this.props.immortal.id,
+            skills: this.props.immortal.skills
         })
     }
 
-    handleEditSubmit = (e) => {
-        this.props.editImmortal(this.state)
+    ceaseEditing = (e) => {
         this.setState({
             editing: false,
-            name: '',
-            description: '',
-            id: ''
         })
+    }
+
+    handleSkillSubmit = (skill) => {
+        this.setState({
+            skills: [...this.state.skills, skill],
+            editing: false
+        })
+        let id = this.props.match.params.id
+        this.props.getImmortal(id)
     }
 
     render(){
@@ -54,18 +63,14 @@ export class ImmortalDetails extends Component {
     if (this.props.auth.logged_in){
 
     if(this.props.immortal.name && this.props.auth.user.user.id === this.props.immortal.user_id){
-
         if (!this.state.editing){
-
     content = 
         <div id={id}>
             <h3>{this.props.immortal.name}</h3>
             <p>{this.props.immortal.description}</p>
             <ul>
-                <li>Skills</li>
-                    <ul>
-                        {this.props.immortal.skills.map(skill => <li>{skill.name}</li>)}
-                    </ul>
+  
+                <li><SkillList skills={this.props.immortal.skills} /></li>
                 <li>Characters</li>
                 <li>Marks</li>
                 <li>Resources</li>
@@ -85,13 +90,11 @@ export class ImmortalDetails extends Component {
         </div>}
         else {
             content = <div>
-                <form onSubmit = {this.handleEditSubmit}>
-                    <input type= 'text' name='name'  value={this.state.name} onChange = {this.handleChange}></input>
-                    <textarea value={this.state.description} name='description' onChange = {this.handleChange}></textarea>
-                    <button type= "submit"> Confirm edit</button>
-                </form>
+                <ImmortalEdit ceaseEditing = {this.ceaseEditing} state= {this.state}/>
                 <ul>
-                <li>Skills</li>
+                <li><SkillList skills={this.props.immortal.skills}/></li>
+                <br/>
+                <CreateSkill state = {this.state} skillSubmit={this.handleSkillSubmit}/>
                 <li>Characters</li>
                 <li>Marks</li>
                 <li>Resources</li>
@@ -105,7 +108,7 @@ export class ImmortalDetails extends Component {
                     </div></li>
                 <li>Journal</li>
             </ul>
-
+            
             </div>
         }
             
@@ -129,7 +132,8 @@ const mapStateToProps = (state) =>{
             name: state.immortal.immortal.name,
             description: state.immortal.immortal.description,
             id: state.immortal.immortal.id,
-            user_id:state.immortal.immortal.user_id
+            user_id:state.immortal.immortal.user_id,
+            skills: [...state.immortal.immortal.skills]
         }
     }
 }

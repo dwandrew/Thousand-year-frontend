@@ -1,12 +1,12 @@
 const LOCALURL = 'http://localhost:3001/'
 
 
-export const createSkill = (skillData) => {
+export const createSkill = (skillData, id) => {
     return (dispatch) => {
 
         const strongParams = {
             skill:{
-                user_id: skillData.user_id,
+                immortal_id: id,
                 name: skillData.name,
                 checked: skillData.checked,
                 lost: skillData.lost

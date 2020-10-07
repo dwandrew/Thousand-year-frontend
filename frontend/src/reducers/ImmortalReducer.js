@@ -40,24 +40,32 @@ const immortalReducer = (state = initState, action) => {
         }
 
         case "GET_IMMORTAL":
-            console.log('got immortal from backend', action.singleImmortal)
+            console.log('got immortal from backend', action.immortal)
             return {
                 ...state,
                 immortal: {
-                    name: action.singleImmortal.name,
-                    description: action.singleImmortal.description,
-                    user_id: action.singleImmortal.user_id,
-                    id: action.singleImmortal.id,
+                    name: action.immortal.immortal.name,
+                    description: action.immortal.immortal.description,
+                    user_id: action.immortal.immortal.user_id,
+                    id: action.immortal.immortal.id,
+                    skills: [...action.immortal.skills]
                 },
                 loading: true
             }
 
         case 'EDIT_IMMORTAL':
+
             console.log('edited immortal in backend', action.immortal)
             let filtered = state.immortals.filter(immortal => immortal.id !== action.immortal.id)
             return {
                 ...state,
-                immortal: action.immortal,
+                immortal: {
+                    name: action.immortal.immortal.name,
+                    description: action.immortal.immortal.description,
+                    user_id: action.immortal.immortal.user_id,
+                    id: action.immortal.immortal.id,
+                    skills: [...action.immortal.skills]
+                },
                 immortals: [...filtered, action.immortal]
 
             }
