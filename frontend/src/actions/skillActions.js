@@ -1,9 +1,5 @@
 const LOCALURL = 'http://localhost:3001/'
 
-function loadingSkills() {
-    return { type: "LOADING_SKILLS" }
- } 
-
 export const createSkill = (skillData, id) => {
     return (dispatch) => {
 
@@ -83,10 +79,14 @@ export const getSkills = (id) => {
         .then(skills =>{
             dispatch({type: 'GET_SKILLS', skills})
         })
+    }
+}
 
+export const deleteSkill = (id) =>{
 
-
-
-
+    return (dispatch) => {
+        fetch(LOCALURL + 'skills/' + id, {method: 'DELETE'})
+        .then(resp => resp.json())
+        .then(resp => dispatch({type: "DELETE_SKILL", id}))
     }
 }

@@ -40,6 +40,7 @@ class SkillsController < ApplicationController
   # DELETE /skills/1
   def destroy
     @skill.destroy
+    render json: {message: 'successful deletion'}
   end
 
   private

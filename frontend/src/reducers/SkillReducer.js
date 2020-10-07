@@ -24,7 +24,12 @@ const skillReducer = (state = initState, action) => {
         return {
             ...state,
             skills: [...filtered]
-        }      
+        }
+    case "DELETE_SKILL":
+        let maintainedSkills = state.skills.filter(skill => skill.id !== action.id)
+        return {
+            skills:[...maintainedSkills]
+        }
     default:
         return state
     }       

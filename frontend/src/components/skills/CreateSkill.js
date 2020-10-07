@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createSkill, editSkill, getSkills } from '../../actions/skillActions'
+import { createSkill, editSkill, getSkills, deleteSkill } from '../../actions/skillActions'
 import { withRouter } from 'react-router-dom'
 
 
@@ -54,6 +54,11 @@ export class CreateSkill extends Component {
         this.props.history.push('/immortals/' + this.props.immortal.id)
     }
 
+    deleteSkill = e => {
+        this.props.deleteSkill(this.state.id)
+        this.props.getSkills(this.props.immortal.id)
+    }
+
     handleEdit = (e) => {
         e.preventDefault()
         this.props.editSkill(this.state)
@@ -82,6 +87,7 @@ export class CreateSkill extends Component {
             <input type="checkbox" name= 'lost' value = {this.state.lost} checked = {this.state.lost} onChange = {this.handleChange}/>
             <br/>
             <button type='submit'>{this.state.editing ? "Edit Skill" : "Add Skill"}</button>
+            <button onClick = {this.deleteSkill}> Delete Skill </button>
             </form>
         </div>
         )
@@ -100,7 +106,8 @@ const mapDispatchToProps = (dispatch) =>{
     return{
         createSkill: (skill, immortal_id) => dispatch(createSkill(skill, immortal_id)),
         editSkill: (skill) => dispatch(editSkill(skill)),
-        getSkills: (immortal_id) => dispatch(getSkills(immortal_id))
+        getSkills: (immortal_id) => dispatch(getSkills(immortal_id)),
+        deleteSkill: (immortal_id) => dispatch(deleteSkill(immortal_id))
     }
 }
 
