@@ -13,6 +13,7 @@ const authReducer = (state = initState, action) => {
                 user: action.user
             }
         case 'CREATE_USER_ERROR':
+            alert(action.errors)
             return {
                 ...state,
                 message: action.errors
@@ -24,6 +25,7 @@ const authReducer = (state = initState, action) => {
                 user: action.user
             }
         case 'CREATE_SESSION_ERROR':
+            alert(action.errors)
                 return {
                     ...state,
                     message: action.errors

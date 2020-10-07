@@ -11,7 +11,6 @@ export class CreateImmortal extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        debugger
         let user_id = this.props.user.user.id
         this.props.createImmortal(this.state, user_id)
         this.setState({

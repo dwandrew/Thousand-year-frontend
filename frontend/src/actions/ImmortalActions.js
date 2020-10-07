@@ -76,14 +76,14 @@ export const editImmortal = (immortalData) => {
         dispatch(loadingImmortal())
 
         let strongParams ={
-            user:{
-                name:immortalData.name,
+            immortal:{
+                name: immortalData.name,
                 description: immortalData.description
             }
 
         }
 
-        fetch(LOCALURL + '/immortals/' +immortalData.id , {
+        fetch(LOCALURL + 'immortals/' +immortalData.id , {
             method: 'PATCH',
             headers: {
             "Accept": "application/json",

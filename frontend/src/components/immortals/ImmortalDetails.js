@@ -4,7 +4,10 @@ import { connect } from 'react-redux'
 
 export class ImmortalDetails extends Component {
     state = {
-        editing: false
+        name : '',
+        description: '',
+        editing: false,
+        id: ''
     }
 
     componentDidMount(){
@@ -20,15 +23,28 @@ export class ImmortalDetails extends Component {
         this.props.history.push('/')
     }
 
+    handleChange = (e) =>{
+        this.setState({
+        [e.target.name]: e.target.value
+        })
+    }
+
     handleEdit = (e) =>{
         this.setState({
-            editing: true
+            editing: true,
+            name: this.props.immortal.name,
+            description: this.props.immortal.description,
+            id: this.props.immortal.id
         })
     }
 
     handleEditSubmit = (e) => {
+        this.props.editImmortal(this.state)
         this.setState({
-            editing: false
+            editing: false,
+            name: '',
+            description: '',
+            id: ''
         })
     }
 
@@ -47,6 +63,9 @@ export class ImmortalDetails extends Component {
             <p>{this.props.immortal.description}</p>
             <ul>
                 <li>Skills</li>
+                    <ul>
+                        {this.props.immortal.skills.map(skill => <li>{skill.name}</li>)}
+                    </ul>
                 <li>Characters</li>
                 <li>Marks</li>
                 <li>Resources</li>
@@ -67,8 +86,8 @@ export class ImmortalDetails extends Component {
         else {
             content = <div>
                 <form onSubmit = {this.handleEditSubmit}>
-                    <input type= 'text' value= {this.props.immortal.name} ></input>
-                    <textarea value= {this.props.immortal.description} ></textarea>
+                    <input type= 'text' name='name'  value={this.state.name} onChange = {this.handleChange}></input>
+                    <textarea value={this.state.description} name='description' onChange = {this.handleChange}></textarea>
                     <button type= "submit"> Confirm edit</button>
                 </form>
                 <ul>
@@ -109,6 +128,7 @@ const mapStateToProps = (state) =>{
         immortal:{
             name: state.immortal.immortal.name,
             description: state.immortal.immortal.description,
+            id: state.immortal.immortal.id,
             user_id:state.immortal.immortal.user_id
         }
     }

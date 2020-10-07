@@ -3,7 +3,9 @@
     immortal:{
         name: '',
         description: '',
-        user_id: ''
+        user_id: '',
+        id:'',
+        skills: []
         },
     loading: false
     }
@@ -44,10 +46,25 @@ const immortalReducer = (state = initState, action) => {
                 immortal: {
                     name: action.singleImmortal.name,
                     description: action.singleImmortal.description,
-                    user_id: action.singleImmortal.user_id
+                    user_id: action.singleImmortal.user_id,
+                    id: action.singleImmortal.id,
                 },
                 loading: true
             }
+
+        case 'EDIT_IMMORTAL':
+            console.log('edited immortal in backend', action.immortal)
+            let filtered = state.immortals.filter(immortal => immortal.id !== action.immortal.id)
+            return {
+                ...state,
+                immortal: action.immortal,
+                immortals: [...filtered, action.immortal]
+
+            }
+
+        case 'EDIT_IMMORTAL_ERRORS':
+            alert(action.errors)
+        return state
 
         case "DELETE_IMMORTAL":
             console.log('removed immortal from backend id:', action.immortalId)
