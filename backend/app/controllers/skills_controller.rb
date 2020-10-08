@@ -22,9 +22,9 @@ class SkillsController < ApplicationController
     @skill = Skill.new(skill_params)
 
     if @skill.save
-      render json: @skill, status: :created, location: @skill
+      render json: {skill: @skill, status: 200, location: @skill}
     else
-      render json: @skill.errors, status: :unprocessable_entity
+      render json: {errors:@skill.errors, status: 500}
     end
   end
 

@@ -22,27 +22,27 @@ export class Dashboard extends Component {
     render() {
 
         const immortals = this.props.immortal.immortals
-        let content
         if (this.props.auth.logged_in && this.props.immortal.loading ){
         let user_id =  this.props.auth.user.user.id
-        return content =  
+        return ( 
         <div className = "dashboard">
             <div className = 'dash_row_left'><ImmortalList user_id = {user_id} immortals = {immortals}/></div>
             <div className = 'dash_row_right'></div>
-        </div>
+        </div>)
         }
         else if(this.props.auth.logged_in && !this.props.immortal.loading ){
-            return content =
+            return (
             <div>
                 <p>Loading Content....</p>
-            </div>
+            </div>)
         }
-        else { return content = 
+        else { return (
         <div>
             <p>
                 Log In to View Immortals
             </p>
-        </div>}
+        </div>
+        )}
     }
 }
 

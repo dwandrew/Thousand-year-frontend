@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :characters
   resources :skills
   resources :immortals do
     resources :skills, only: [:create, :show, :index, :destroy] 

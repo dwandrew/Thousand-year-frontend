@@ -6,7 +6,6 @@ import ImmortalDetails from './components/immortals/ImmortalDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateImmortal from './components/immortals/CreateImmortal'
-import CreateSkill from './components/skills/CreateSkill'
 import  {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 
@@ -22,7 +21,6 @@ function App() {
           <Route exact path='/signin' component = {SignIn}/>
           <Route exact path='/signUp' component = {SignUp}/>
           <Route exact path='/create' component = {CreateImmortal}/>
-          <Route exact path='/create/skill' component = {CreateSkill}/>
         </Switch>
       </div>
     </BrowserRouter>

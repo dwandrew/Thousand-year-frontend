@@ -24,9 +24,10 @@ export const createSkill = (skillData, id) => {
             .then(skill => {
                 if(skill.errors)
                  return dispatch({type: "CREATE_SKILL_ERROR", errors: skill.errors})
-                else
-                return dispatch({type: "CREATE_SKILL", skill})
-                
+                else{
+                let newSkill = skill.skill
+                return dispatch({type: "CREATE_SKILL", newSkill})
+                }
             })
             .catch((errors) => {
                 console.log(errors)
