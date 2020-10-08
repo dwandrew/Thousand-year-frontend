@@ -61,12 +61,20 @@ export class CreateCharacter extends Component {
     deleteCharacter = e => {
         this.props.deleteCharacter(this.state.id)
         this.props.getCharacters(this.props.immortal.id)
+        
+        this.setState({
+            name: '',
+            dead: false,
+            is_immortal: false,
+            description: '',
+            id: ''  
+        })
         this.props.history.push('/immortals/' + this.props.immortal.id)
     }
 
     handleEdit = (e) => {
         e.preventDefault()
-        this.props.editCharacter(this.state)
+        if (this.state.name !== ''){this.props.editCharacter(this.state)}
         this.props.handleParentEdit()
         this.props.getCharacters(this.props.immortal.id)
         this.setState({

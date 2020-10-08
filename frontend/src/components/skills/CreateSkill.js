@@ -57,12 +57,17 @@ export class CreateSkill extends Component {
     deleteSkill = e => {
         this.props.deleteSkill(this.state.id)
         this.props.getSkills(this.props.immortal.id)
+        this.setState({
+            name: '',
+            lost: false,
+            checked: false,  
+        })
         this.props.history.push('/immortals/' + this.props.immortal.id)
     }
 
     handleEdit = (e) => {
         e.preventDefault()
-        this.props.editSkill(this.state)
+        if (this.state.name !== ''){this.props.editSkill(this.state)}
         this.props.handleParentEdit()
         this.props.getSkills(this.props.immortal.id)
         this.setState({

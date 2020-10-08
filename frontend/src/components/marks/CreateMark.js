@@ -46,13 +46,16 @@ export class CreateMark extends Component {
     deleteMark = e => {
         this.props.deleteMark(this.state.id)
         this.props.getMarks(this.props.immortal.id)
-
+        this.setState({
+            name: '',
+            description: ''  
+        })
         this.props.history.push('/immortals/' + this.props.immortal.id)
     }
 
     handleEdit = (e) => {
         e.preventDefault()
-        this.props.editMark(this.state)
+        if (this.state.name !== ''){this.props.editMark(this.state)}
         this.props.handleParentEdit()
         this.props.getMarks(this.props.immortal.id)
         this.setState({
