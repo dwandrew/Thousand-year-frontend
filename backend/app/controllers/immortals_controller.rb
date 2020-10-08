@@ -10,7 +10,13 @@ class ImmortalsController < ApplicationController
 
   # GET /immortals/1
   def show
-    render json: {immortal: @immortal, status: 200, skills: @immortal.skills.sort_by{|e| e.name}}
+    render json: {
+      immortal: @immortal, 
+      status: 200, 
+      skills: @immortal.skills.sort_by{|e| e.name},
+      characters: @immortal.characters.sort_by{|e| e.name}, 
+      marks: @immortal.marks.sort_by{|e| e.name} 
+    }
   end
 
   # POST /immortals

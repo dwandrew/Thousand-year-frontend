@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  resources :marks
   resources :characters
   resources :skills
   resources :immortals do
     resources :skills, only: [:create, :show, :index, :destroy]
+  end
+  resources :immortals do
+    resources :marks, only: [:create, :show, :index, :destroy]
   end
   resources :immortals do
     resources :characters, only: [:create, :show, :index, :destroy]

@@ -5,7 +5,9 @@
         description: '',
         user_id: '',
         id:'',
-        skills: []
+        skills: [],
+        characters:[],
+        marks:[]
         },
     loading: false
     }
@@ -48,7 +50,9 @@ const immortalReducer = (state = initState, action) => {
                     description: action.immortal.immortal.description,
                     user_id: action.immortal.immortal.user_id,
                     id: action.immortal.immortal.id,
-                    skills: [...action.immortal.skills]
+                    skills: [...action.immortal.skills],
+                    characters: [...action.immortal.characters],
+                    marks: [...action.immortal.marks]
                 },
                 loading: true
             }

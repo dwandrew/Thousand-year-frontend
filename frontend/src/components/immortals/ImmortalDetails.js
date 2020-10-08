@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 import { getImmortal, deleteImmortal, editImmortal } from  '../../actions/ImmortalActions'
+//Importing Skills information
 import { getSkills } from '../../actions/skillActions'
 import CreateSkill from '../skills/CreateSkill'
 import SkillList from '../skills/SkillList'
+//Importing Character information
 import { getCharacters } from '../../actions/CharacterActions'
 import CreateCharacter from '../characters/CreateCharacter'
 import ListCharacters from '../characters/ListCharacters'
+//Importing Marks information
+import { getMarks } from '../../actions/MarkActions'
+import CreateMark from '../marks/CreateMark'
+import MarkList from '../marks/MarkList'
+
 import { connect } from 'react-redux'
 import ImmortalEdit from './ImmortalEdit'
 import CharacterList from '../characters/ListCharacters'
@@ -16,7 +23,9 @@ export class ImmortalDetails extends Component {
         description: '',
         editing: false,
         id: '',
-        skills:[]
+        skills:[],
+        characters:[],
+        marks:[]
     }
 
     componentDidMount(){
@@ -24,6 +33,7 @@ export class ImmortalDetails extends Component {
         this.props.getImmortal(id)
         this.props.getSkills(id)
         this.props.getCharacters(id)
+        this.props.getMarks(id)
     }
 
     handleDelete = (e) =>{
@@ -45,7 +55,10 @@ export class ImmortalDetails extends Component {
             name: this.props.immortal.name,
             description: this.props.immortal.description,
             id: this.props.immortal.id,
-            skills: this.props.skills
+            skills: this.props.skills,
+            characters: this.props.characters,
+            marks: this.props.marks
+
         })
     }
 
@@ -55,12 +68,7 @@ export class ImmortalDetails extends Component {
         })
     }
 
-    handleSkillSubmit = (skill) => {
-        let id = this.props.match.params.id
-        this.props.getImmortal(id)
-    }
-
-    handleCharacterSubmit = (character) => {
+    handleChildSubmit = (skill) => {
         let id = this.props.match.params.id
         this.props.getImmortal(id)
     }
@@ -79,8 +87,11 @@ export class ImmortalDetails extends Component {
                     <ul>
         
                         <li><SkillList skills={this.props.skills.skills} /></li>
+
                         <li><ListCharacters characters = {this.props.characters.characters}/></li>
-                        <li>Marks</li>
+
+                        <li><MarkList marks = {this.props.marks.marks}/></li>
+
                         <li>Resources</li>
                         <li>
                             <div>Memories
@@ -102,12 +113,16 @@ export class ImmortalDetails extends Component {
                     <ul>
                     <li><SkillList skills={this.props.skills.skills} /></li>
                     <br/>
-                    <CreateSkill state = {this.state} skillSubmit={this.handleSkillSubmit}/>
+                    <CreateSkill state = {this.state} skillSubmit={this.handleChildSubmit}/>
                     <br/>
                     <li><CharacterList characters = {this.props.characters.characters}/></li>
                     <br/>
-                    <CreateCharacter state = {this.state} characterSubmit={this.handleCharacterSubmit}/>
-                    <li>Marks</li>
+                    <CreateCharacter state = {this.state} characterSubmit={this.handleChildSubmit}/>
+                    <br/>
+                    <li><MarkList marks = {this.props.marks.marks}/></li>
+                    <br/>
+                    <CreateMark state = {this.state} markSubmit={this.handleChildSubmit}/>
+                    <br/>
                     <li>Resources</li>
                     <li>
                         <div>Memories
@@ -147,7 +162,8 @@ const mapStateToProps = (state) =>{
             skills: [...state.immortal.immortal.skills]
         },
         skills: state.skills,
-        characters: state.characters
+        characters: state.characters,
+        marks: state.marks
     }
 }
 
@@ -157,7 +173,8 @@ const mapDispatchToProps =  (dispatch) => {
         deleteImmortal: (immortalId) => dispatch(deleteImmortal(immortalId)),
         editImmortal: (immortalData) => dispatch(editImmortal(immortalData)),
         getSkills: (immortal_id) => dispatch(getSkills(immortal_id)),
-        getCharacters: (immortal_id) => dispatch(getCharacters(immortal_id))
+        getCharacters: (immortal_id) => dispatch(getCharacters(immortal_id)),
+        getMarks: (immortal_id) => dispatch(getMarks(immortal_id))
     }
 }
 

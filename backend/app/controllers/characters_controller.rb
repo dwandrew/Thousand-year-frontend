@@ -40,6 +40,7 @@ class CharactersController < ApplicationController
   # DELETE /characters/1
   def destroy
     @character.destroy
+    render json: {message: 'successful deletion'}
   end
 
   private
