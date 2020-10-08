@@ -4,11 +4,11 @@ export const createCharacter = (characterData, id) => {
     return (dispatch) => {
 
         const strongParams = {
-            skill:{
+            character:{
                 immortal_id: id,
                 name: characterData.name,
-                checked: characterData.dead,
-                lost: characterData.immortal,
+                dead: characterData.dead,
+                is_immortal: characterData.is_immortal,
                 description: characterData.description
             }
         }
@@ -23,6 +23,7 @@ export const createCharacter = (characterData, id) => {
             })
             .then(resp => resp.json())
             .then(character => {
+
                 if(character.errors)
                  return dispatch({type: "CREATE_CHARACTER_ERROR", errors: character.errors})
                 else{
@@ -41,11 +42,12 @@ export const createCharacter = (characterData, id) => {
 export const editCharacter = (characterData) => {
     return (dispatch) =>{
         const strongParams = {
-            skill:{
+            character:{
                 id: characterData.id,
                 name: characterData.name,
-                checked: characterData.checked,
-                lost: characterData.lost
+                dead: characterData.dead,
+                is_immortal: characterData.is_immortal,
+                description: characterData.description
             }
         }
         fetch(LOCALURL + 'characters/' + characterData.id, {
@@ -79,7 +81,7 @@ export const getCharacters = (id) => {
         fetch(LOCALURL +"immortals/" +id + '/characters')
         .then(resp => resp.json())
         .then(characters =>{
-            dispatch({type: 'GET_CHARACTERS', character})
+            dispatch({type: 'GET_CHARACTERS', characters})
         })
     }
 }

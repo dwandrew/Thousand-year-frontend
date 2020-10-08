@@ -3,8 +3,12 @@ import { getImmortal, deleteImmortal, editImmortal } from  '../../actions/Immort
 import { getSkills } from '../../actions/skillActions'
 import CreateSkill from '../skills/CreateSkill'
 import SkillList from '../skills/SkillList'
+import { getCharacters } from '../../actions/CharacterActions'
+import CreateCharacter from '../characters/CreateCharacter'
+import ListCharacters from '../characters/ListCharacters'
 import { connect } from 'react-redux'
 import ImmortalEdit from './ImmortalEdit'
+import CharacterList from '../characters/ListCharacters'
 
 export class ImmortalDetails extends Component {
     state = {
@@ -19,6 +23,7 @@ export class ImmortalDetails extends Component {
         let id = this.props.match.params.id
         this.props.getImmortal(id)
         this.props.getSkills(id)
+        this.props.getCharacters(id)
     }
 
     handleDelete = (e) =>{
@@ -55,6 +60,11 @@ export class ImmortalDetails extends Component {
         this.props.getImmortal(id)
     }
 
+    handleCharacterSubmit = (character) => {
+        let id = this.props.match.params.id
+        this.props.getImmortal(id)
+    }
+
     render(){
     const id = this.props.match.params.id
     let content
@@ -69,7 +79,7 @@ export class ImmortalDetails extends Component {
                     <ul>
         
                         <li><SkillList skills={this.props.skills.skills} /></li>
-                        <li>Characters</li>
+                        <li><ListCharacters characters = {this.props.characters.characters}/></li>
                         <li>Marks</li>
                         <li>Resources</li>
                         <li>
@@ -93,7 +103,10 @@ export class ImmortalDetails extends Component {
                     <li><SkillList skills={this.props.skills.skills} /></li>
                     <br/>
                     <CreateSkill state = {this.state} skillSubmit={this.handleSkillSubmit}/>
-                    <li>Characters</li>
+                    <br/>
+                    <li><CharacterList characters = {this.props.characters.characters}/></li>
+                    <br/>
+                    <CreateCharacter state = {this.state} characterSubmit={this.handleCharacterSubmit}/>
                     <li>Marks</li>
                     <li>Resources</li>
                     <li>
@@ -133,7 +146,8 @@ const mapStateToProps = (state) =>{
             user_id:state.immortal.immortal.user_id,
             skills: [...state.immortal.immortal.skills]
         },
-        skills: state.skills
+        skills: state.skills,
+        characters: state.characters
     }
 }
 
@@ -142,7 +156,8 @@ const mapDispatchToProps =  (dispatch) => {
         getImmortal: (immortalId) => dispatch(getImmortal(immortalId)),
         deleteImmortal: (immortalId) => dispatch(deleteImmortal(immortalId)),
         editImmortal: (immortalData) => dispatch(editImmortal(immortalData)),
-        getSkills: (immortal_id) => dispatch(getSkills(immortal_id))
+        getSkills: (immortal_id) => dispatch(getSkills(immortal_id)),
+        getCharacters: (immortal_id) => dispatch(getCharacters(immortal_id))
     }
 }
 

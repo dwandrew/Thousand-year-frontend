@@ -18,12 +18,11 @@ const characterReducer = (state = initState, action) => {
                 characters:[...state.characters, action.newCharacter].sort((a, b) => a.name.localeCompare(b.name))
             }
     case 'CREATE_CHARACTER_ERROR':
-
         alert('Character Name: ' + action.errors.name)
         return {...state,
             errors: action.errors
         }
-    case "GET_CHARACTERs":
+    case "GET_CHARACTERS":
         return {...state,
                 characters: [...action.characters].sort((a, b) => a.name.localeCompare(b.name))
             }

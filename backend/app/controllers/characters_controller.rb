@@ -3,8 +3,8 @@ class CharactersController < ApplicationController
 
   # GET /characters
   def index
-    if params(:immortal_id)
-    immortal = Immortal.find_by(params[:immortal_id])
+    if params[:immortal_id]
+    immortal = Immortal.find_by_id(params[:immortal_id])
     @characters = immortal.characters
     else
       @characters = Character.all
@@ -50,6 +50,6 @@ class CharactersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def character_params
-      params.require(:character).permit(:immortal_id, :dead, :immortal, :name, :description)
+      params.require(:character).permit(:immortal_id, :dead, :is_immortal, :name, :description)
     end
 end

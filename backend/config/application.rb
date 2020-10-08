@@ -36,8 +36,8 @@ module WalkthroughBackend
     # Skip views, helpers and assets when generating a new resource.
     
     # for generation of models set to true
-    config.api_only = true
+    # config.api_only = true
     # for running set to false
-    # config.api_only = false
+    config.api_only = false
   end
 end
