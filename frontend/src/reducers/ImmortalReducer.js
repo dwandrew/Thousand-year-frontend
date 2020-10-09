@@ -60,7 +60,8 @@ const immortalReducer = (state = initState, action) => {
         case 'EDIT_IMMORTAL':
 
             console.log('edited immortal in backend', action.immortal)
-            let filtered = state.immortals.filter(immortal => immortal.id !== action.immortal.id)
+            let filtered = state.immortals.filter(immortal => immortal.id !== action.immortal.immortal.id)
+            filtered = [...filtered, action.immortal.immortal].sort((a, b) => a.name.localeCompare(b.name))
             return {
                 ...state,
                 immortal: {
@@ -70,7 +71,7 @@ const immortalReducer = (state = initState, action) => {
                     id: action.immortal.immortal.id,
                     skills: [...action.immortal.skills]
                 },
-                immortals: [...filtered, action.immortal]
+                immortals: [...filtered]
 
             }
 

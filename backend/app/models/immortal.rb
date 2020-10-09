@@ -4,4 +4,5 @@ class Immortal < ApplicationRecord
     has_many :skills
     has_many :characters
     has_many :marks
+    has_many :resources
 end

@@ -77,7 +77,6 @@ export const editCharacter = (characterData) => {
 
 export const getCharacters = (id) => {
     return (dispatch) =>{
-
         fetch(LOCALURL +"immortals/" +id + '/characters')
         .then(resp => resp.json())
         .then(characters =>{

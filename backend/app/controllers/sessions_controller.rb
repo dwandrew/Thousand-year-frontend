@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(username: session_params[:username])
         if @user && @user.authenticate(session_params[:password])
           login!
-          render json: { logged_in: true, user: @user }
+          render json: { logged_in: true, user: {id:@user.id, username:@user.username} }
         else
           render json: {  status: 401, errors: ['no such user, please try again'] }
         end
