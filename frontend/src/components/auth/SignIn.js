@@ -8,10 +8,6 @@ export class SignIn extends Component {
         password: ''
     }
 
-    componentDidMount(){
-
-    }
-
     handleSubmit = e => {
         e.preventDefault()
         this.setState({

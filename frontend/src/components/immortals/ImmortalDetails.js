@@ -12,10 +12,15 @@ import ListCharacters from '../characters/ListCharacters'
 import { getMarks } from '../../actions/MarkActions'
 import CreateMark from '../marks/CreateMark'
 import MarkList from '../marks/MarkList'
+//Importing Mesources information
+import { getResources } from '../../actions/ResourceActions'
+import CreateResource from '../resources/CreateResource'
+import ResourceList from '../resources/ResourceList'
 
 import { connect } from 'react-redux'
 import ImmortalEdit from './ImmortalEdit'
 import CharacterList from '../characters/ListCharacters'
+
 
 export class ImmortalDetails extends Component {
     state = {
@@ -34,6 +39,7 @@ export class ImmortalDetails extends Component {
         this.props.getSkills(id)
         this.props.getCharacters(id)
         this.props.getMarks(id)
+        this.props.getResources(id)
     }
 
     handleDelete = (e) =>{
@@ -57,8 +63,8 @@ export class ImmortalDetails extends Component {
             id: this.props.immortal.id,
             skills: this.props.skills,
             characters: this.props.characters,
-            marks: this.props.marks
-
+            marks: this.props.marks,
+            resources: this.state.resources
         })
     }
 
@@ -92,7 +98,7 @@ export class ImmortalDetails extends Component {
 
                         <li><MarkList marks = {this.props.marks.marks}/></li>
 
-                        <li>Resources</li>
+                        <li><ResourceList resources = {this.props.resources.resources}/></li>
                         <li>
                             <div>Memories
                                 <ol>
@@ -123,7 +129,9 @@ export class ImmortalDetails extends Component {
                     <br/>
                     <CreateMark state = {this.state} markSubmit={this.handleChildSubmit}/>
                     <br/>
-                    <li>Resources</li>
+                    <li><ResourceList resources = {this.props.resources.resources}/></li>
+                    <br/>
+                    <CreateResource state = {this.state} resourceSubmit={this.handleChildSubmit}/>
                     <li>
                         <div>Memories
                             <ol>
@@ -163,7 +171,8 @@ const mapStateToProps = (state) =>{
         },
         skills: state.skills,
         characters: state.characters,
-        marks: state.marks
+        marks: state.marks,
+        resources: state.resources
     }
 }
 
@@ -174,7 +183,8 @@ const mapDispatchToProps =  (dispatch) => {
         editImmortal: (immortalData) => dispatch(editImmortal(immortalData)),
         getSkills: (immortal_id) => dispatch(getSkills(immortal_id)),
         getCharacters: (immortal_id) => dispatch(getCharacters(immortal_id)),
-        getMarks: (immortal_id) => dispatch(getMarks(immortal_id))
+        getMarks: (immortal_id) => dispatch(getMarks(immortal_id)),
+        getResources: (immortal_id) => dispatch(getResources(immortal_id))
     }
 }
 

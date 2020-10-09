@@ -3,8 +3,13 @@ class ResourcesController < ApplicationController
 
   # GET /resources
   def index
-    @resources = Resource.all
+    if params[:immortal_id]
 
+      immortal = Immortal.find_by_id(params[:immortal_id])
+      @resources = immortal.resources
+    else
+    @resources = Resource.all
+    end
     render json: @resources
   end
 
@@ -18,9 +23,9 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(resource_params)
 
     if @resource.save
-      render json: @resource, status: :created, location: @resource
+      render json: {resource: @resource, status: 200, location: @resource}
     else
-      render json: @resource.errors, status: :unprocessable_entity
+      render json: {errors: @resource.errors, status: 500}
     end
   end
 
@@ -36,6 +41,7 @@ class ResourcesController < ApplicationController
   # DELETE /resources/1
   def destroy
     @resource.destroy
+    render json: {message: 'successful deletion'}
   end
 
   private
@@ -46,6 +52,6 @@ class ResourcesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def resource_params
-      params.require(:resource).permit(:name, :description, :stationary, :lost)
+      params.require(:resource).permit(:name, :description, :stationary, :lost, :immortal_id)
     end
 end
