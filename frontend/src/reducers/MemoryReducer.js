@@ -23,7 +23,7 @@ const MemoryReducer = (state = initState, action) => {
             }
     case "EDIT_MEMORY":
         let filtered = state.memories.filter(memory => memory.id !== action.memory.id)
-        filtered = [...filtered].sort((a, b) => a.id - b.id);
+        filtered = [...filtered, action.memory].sort((a, b) => a.id - b.id);
         return {
             ...state,
             memories: [...filtered]

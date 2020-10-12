@@ -11,9 +11,9 @@ const MemoryList =({memories}) => {
             <div>
                 <h3>List of Memories</h3>
                 <ul style = {listStyle}>
-                    { memories && memories.map(memory => {
+                    { memories && memories.map((memory, index) => {
                         return (
-                            <MemorySummary memory = {memory} key={memory.id} />
+                            <MemorySummary memory = {memory} index = {index} key={memory.id} />
                         )
                     })}   
                 </ul>

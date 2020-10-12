@@ -15,12 +15,14 @@ export class MemorySummary extends Component{
 
     render(){    
        let { memory } = this.props
+       let { index } = this.props
+
        if (!this.state.editing){
 
     return (
             <li>
                 <div key= {memory.id} >
-                    <h3>Memory id: {memory.id}</h3>
+                    <h3>Memory id: { index+1 }</h3>
                     <p>Memory in diary? {memory.in_diary ? "Yes": 'No'}</p>
                     <p>Memory lost? {memory.lost ? "Yes": 'No'}</p>
                     <button onClick = {this.handleEdit}> Edit </button>
