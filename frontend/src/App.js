@@ -14,6 +14,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Navbar/>
+        <div className='core-content'>
         <h1>Thousand Year Chonicler</h1>
         <Switch>
           <Route exact path='/' component = {Dashboard}/>
@@ -22,6 +23,7 @@ function App() {
           <Route exact path='/signUp' component = {SignUp}/>
           <Route exact path='/create' component = {CreateImmortal}/>
         </Switch>
+        </div>
       </div>
     </BrowserRouter>
   );

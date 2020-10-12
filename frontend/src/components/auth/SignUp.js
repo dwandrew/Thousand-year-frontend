@@ -13,13 +13,13 @@ export class SignUp extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
+        this.props.createUser(this.state)
         this.setState({
             username: '',
             email: '',
             password: '',
             password_confirmation: ''
         })
-        this.props.createUser(this.state)
         this.props.history.push('/')
     }
 

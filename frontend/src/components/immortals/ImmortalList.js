@@ -5,8 +5,8 @@ const ImmortalList =({user_id, immortals}) => {
     if(immortals && immortals.length >= 1){
         return (
             <div>
-                <h3>List of Immortals</h3>
-                <ul>
+                <h3 id='list-of-immortals' >List of Immortals</h3>
+                <ul className = 'immortal-list'>
                     { immortals && immortals.map(immortal => {
                         return (
                             <ImmortalSummary immortal={immortal} key={immortal.id}/>

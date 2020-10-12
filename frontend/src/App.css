@@ -1,0 +1,196 @@
+/* Whole app css */
+
+.App{
+  font-family: cursive;
+}
+a:link{
+  color: goldenrod;
+}
+
+a:visited{
+  color: goldenrod;
+}
+
+a:hover{
+  color: antiquewhite;
+}
+
+a:active{
+  color: crimson;
+}
+
+textarea {
+  max-height: 325px;
+  min-height: 20px;
+  width: 98%;
+  min-width: 98%;
+  max-width: 98%;
+  overflow: auto;
+  font-family: cursive;
+  font-size: large;
+}
+
+input {
+  width: 98%;
+  max-width: 98%;
+}
+/* NavBar css */
+.navbar{
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    border: 1px solid #e7e7e7;
+    overflow: hidden;
+    background-color: #333;
+}
+.navbar li {
+    float: left;
+  }
+  
+  .navbar li:last-child{
+      float: right;
+      background-color: darkred;
+  }
+  .navbar li:last-child a:hover{
+    float: right;
+    background-color: black;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+.navbar li a:hover {
+    background-color: darkred;
+  }
+
+ /* Core content css  */
+
+.core-content{
+  margin-top: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* Immortal list */
+.immortal-list{
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 10px;
+  row-gap: 15px; 
+  max-width: 95vw;
+  justify-content: space-evenly;
+  align-content: space-around;
+}
+
+#list-of-immortals{
+  background-color: rgb(175, 9, 9);
+  border: black 1px solid;
+  text-align: center;
+  
+}
+  
+/* immortal display cards */
+.immortal-list > li{
+border: solid 1px black;
+text-align: center;
+background-color: rgb(175, 9, 9);
+overflow: auto;
+width: 95%;
+height: 95%;
+padding: 5px;
+}
+
+/* forms Css */
+
+.create_form {
+    border: 1px solid;
+    margin: 5px;
+    padding: 10px;
+    box-shadow: 10px 10px 10px grey;
+    max-width: 25vw;
+    height: fit-content;
+    max-height: 500px;
+   
+}
+
+/* immortal details pages */
+#immortal-details-list {
+  display: inline-grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100vw;
+  grid-gap: 10px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 60vh;
+}
+
+#immortal-details-edit-list {
+  display: inline-grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 2fr 1fr;
+  width: 95%;
+  grid-gap: 10px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 60vh;
+}
+
+
+.skills-list{
+  grid-column: 1 /2;
+  height: 80%;
+  overflow: auto;
+  list-style-type: none;
+}
+
+.skills-list-edit{
+  grid-column: 1 /2;
+  grid-row: 2;
+}
+
+.characters-list {
+  grid-column: 2 /3;
+  height: 80%;
+  overflow: auto;
+  list-style-type: none;
+}
+
+.characters-list-edit {
+  grid-column: 2 /3;
+  grid-row: 2;
+}
+
+.mark-list {
+  grid-column: 3 /4 ;
+  height: 80%;
+  overflow: auto;
+  list-style-type: none;
+}
+
+.mark-list-edit{
+  grid-column: 3 /4 ;
+  grid-row: 2;
+}
+
+.resource-list {
+  grid-column: 4 / 5;
+  height: 80%;
+  overflow: auto;
+  list-style-type: none;
+}
+
+.resource-list-edit{
+  grid-column: 4 / 5;
+  grid-row: 2;
+}

@@ -87,52 +87,46 @@ export class ImmortalDetails extends Component {
         if(this.props.immortal.name && this.props.auth.user.user.id === this.props.immortal.user_id){
             if (!this.state.editing){
                 content = 
-                <div id={id}>
+                <div id={id} className= 'immortal-details'>
                     <h3>{this.props.immortal.name}</h3>
                     <p>{this.props.immortal.description}</p>
-                    <ul>
+                    <button onClick = {this.handleEdit}>Edit Immortal</button>
+                    <ul id= 'immortal-details-list'>
         
-                        <li><SkillList skills={this.props.skills.skills} /></li>
+                        <li  className='skills-list'><SkillList skills={this.props.skills.skills}/></li>
 
-                        <li><ListCharacters characters = {this.props.characters.characters}/></li>
+                        <li className = 'characters-list'><ListCharacters characters = {this.props.characters.characters} /></li>
 
-                        <li><MarkList marks = {this.props.marks.marks}/></li>
+                        <li className='mark-list' ><MarkList marks = {this.props.marks.marks} /></li>
 
-                        <li><ResourceList resources = {this.props.resources.resources}/></li>
-                        <li>
-                            <div>Memories
+                        <li  className = 'resource-list' ><ResourceList resources = {this.props.resources.resources}/></li>
+                        <li className = 'memories-list'>
+                            <div>Memories 
                                 <ol>
                                     <li>Experience 1</li>
                                     <li>Experience 2</li>
                                     <li>Experience 3</li>
                                 </ol>
                             </div></li>
-                        <li>Journal</li>
+                        <li className = 'journal'>Journal</li>
                     </ul>
-                    <button onClick = {this.handleEdit}>Edit Immortal</button>
+                    
                     <button onClick = {this.handleDelete}>Delete Immortal</button>
                     
                 </div>}
             else {
-                content = <div>
+                content = <div className = 'immortal-details-edit'>
                     <ImmortalEdit ceaseEditing = {this.ceaseEditing} state= {this.state}/>
-                    <ul>
-                    <li><SkillList skills={this.props.skills.skills} /></li>
-                    <br/>
-                    <CreateSkill state = {this.state} skillSubmit={this.handleChildSubmit}/>
-                    <br/>
-                    <li><CharacterList characters = {this.props.characters.characters}/></li>
-                    <br/>
-                    <CreateCharacter state = {this.state} characterSubmit={this.handleChildSubmit}/>
-                    <br/>
-                    <li><MarkList marks = {this.props.marks.marks}/></li>
-                    <br/>
-                    <CreateMark state = {this.state} markSubmit={this.handleChildSubmit}/>
-                    <br/>
-                    <li><ResourceList resources = {this.props.resources.resources}/></li>
-                    <br/>
-                    <CreateResource state = {this.state} resourceSubmit={this.handleChildSubmit}/>
-                    <li>
+                    <ul id= 'immortal-details-edit-list'>
+                    <li className='skills-list' ><SkillList skills={this.props.skills.skills} /></li>
+                    <li className='skills-list-edit'><CreateSkill state = {this.state} skillSubmit={this.handleChildSubmit}/></li>
+                    <li className = 'characters-list' ><CharacterList characters = {this.props.characters.characters}/></li>
+                    <li className = 'characters-list-edit'><CreateCharacter state = {this.state} characterSubmit={this.handleChildSubmit}/></li>
+                    <li className='mark-list' ><MarkList marks = {this.props.marks.marks}/></li>
+                    <li className='mark-list-edit'><CreateMark state = {this.state} markSubmit={this.handleChildSubmit}/></li>
+                    <li className = 'resource-list' ><ResourceList resources = {this.props.resources.resources}/></li>
+                    <li className = 'resource-list-edit'><CreateResource state = {this.state} resourceSubmit={this.handleChildSubmit}/></li>
+                    <li className = 'memories-list' >
                         <div>Memories
                             <ol>
                                 <li>Experience 1</li>
@@ -140,7 +134,8 @@ export class ImmortalDetails extends Component {
                                 <li>Experience 3</li>
                             </ol>
                         </div></li>
-                    <li>Journal</li>
+                    <li className = 'memories-list-edit'></li>
+                    <li className = 'journal' >Journal</li>
                 </ul>
                 
                 </div>

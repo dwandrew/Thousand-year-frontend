@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
@@ -9,9 +8,8 @@ export class NavBar extends Component {
         let links
         this.props.state.auth.logged_in ?  links = <SignedInLinks/> :  links = <SignedOutLinks/>
     return (
-        <nav className = 'NavBar'>
+        <nav >
             <div>
-                <Link to='/'>Dash</Link>
                 {links}
             </div>
         </nav>
