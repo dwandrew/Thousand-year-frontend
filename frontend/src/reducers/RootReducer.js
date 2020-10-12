@@ -4,6 +4,7 @@ import SkillReducer from './SkillReducer'
 import CharacterReducer from './CharacterReducer'
 import MarkReducer from './MarkReducer'
 import ResourceReducer from './ResourceReducer'
+import MemoryReducer from './MemoryReducer'
 import { combineReducers } from 'redux'
 
 
@@ -15,6 +16,7 @@ const rootReducer =  combineReducers ({
     characters: CharacterReducer,
     marks: MarkReducer,
     resources: ResourceReducer,
+    memories: MemoryReducer
 })
 
 

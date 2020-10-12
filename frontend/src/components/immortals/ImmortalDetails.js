@@ -12,10 +12,14 @@ import ListCharacters from '../characters/ListCharacters'
 import { getMarks } from '../../actions/MarkActions'
 import CreateMark from '../marks/CreateMark'
 import MarkList from '../marks/MarkList'
-//Importing Mesources information
+//Importing Resources information
 import { getResources } from '../../actions/ResourceActions'
 import CreateResource from '../resources/CreateResource'
 import ResourceList from '../resources/ResourceList'
+//Importing Memory Information
+import { getMemories } from '../../actions/MemoryActions'
+import CreateMemory from '../memories/CreateMemory'
+import MemoryList from '../memories/MemoryList'
 
 import { connect } from 'react-redux'
 import ImmortalEdit from './ImmortalEdit'
@@ -30,7 +34,8 @@ export class ImmortalDetails extends Component {
         id: '',
         skills:[],
         characters:[],
-        marks:[]
+        marks:[],
+        memories:[],
     }
 
     componentDidMount(){
@@ -40,6 +45,7 @@ export class ImmortalDetails extends Component {
         this.props.getCharacters(id)
         this.props.getMarks(id)
         this.props.getResources(id)
+        this.props.getMemories(id)
     }
 
     handleDelete = (e) =>{
@@ -64,7 +70,8 @@ export class ImmortalDetails extends Component {
             skills: this.props.skills,
             characters: this.props.characters,
             marks: this.props.marks,
-            resources: this.state.resources
+            resources: this.props.resources,
+            memories: this.props.memories
         })
     }
 
@@ -74,7 +81,7 @@ export class ImmortalDetails extends Component {
         })
     }
 
-    handleChildSubmit = (skill) => {
+    handleChildSubmit = () => {
         let id = this.props.match.params.id
         this.props.getImmortal(id)
     }
@@ -88,10 +95,11 @@ export class ImmortalDetails extends Component {
             if (!this.state.editing){
                 content = 
                 <div id={id} className= 'immortal-details'>
-                    <div class = 'immortal-base-info'>
+                    <div className = 'immortal-base-info'>
                     <h3>{this.props.immortal.name}</h3>
                     <p>{this.props.immortal.description}</p>
                     <button onClick = {this.handleEdit}>Edit Immortal</button>
+                    <button onClick = {this.handleDelete}>Delete Immortal</button>
                     </div>
                     <ul id= 'immortal-details-list'>
         
@@ -102,23 +110,18 @@ export class ImmortalDetails extends Component {
                         <li className='mark-list' ><MarkList marks = {this.props.marks.marks} /></li>
 
                         <li  className = 'resource-list' ><ResourceList resources = {this.props.resources.resources}/></li>
-                        <li className = 'memories-list'>
-                            <div>Memories 
-                                <ol>
-                                    <li>Experience 1</li>
-                                    <li>Experience 2</li>
-                                    <li>Experience 3</li>
-                                </ol>
-                            </div></li>
+                        
+                        <li className = 'memories-list'> <MemoryList memories = {this.props.memories.memories} /></li>
+                        
                         <li className = 'journal'>Journal</li>
                     </ul>
                     
-                    <button onClick = {this.handleDelete}>Delete Immortal</button>
+                    
                     
                 </div>}
             else {
                 content = <div className = 'immortal-details-edit'>
-                    <div class = 'immortal-base-info'>
+                    <div className = 'immortal-base-info'>
                     <ImmortalEdit ceaseEditing = {this.ceaseEditing} state= {this.state}/>
                     </div>
                     <ul id= 'immortal-details-edit-list'>
@@ -130,15 +133,8 @@ export class ImmortalDetails extends Component {
                     <li className='mark-list-edit'><CreateMark state = {this.state} markSubmit={this.handleChildSubmit}/></li>
                     <li className = 'resource-list' ><ResourceList resources = {this.props.resources.resources}/></li>
                     <li className = 'resource-list-edit'><CreateResource state = {this.state} resourceSubmit={this.handleChildSubmit}/></li>
-                    <li className = 'memories-list' >
-                        <div>Memories
-                            <ol>
-                                <li>Experience 1</li>
-                                <li>Experience 2</li>
-                                <li>Experience 3</li>
-                            </ol>
-                        </div></li>
-                    <li className = 'memories-list-edit'></li>
+                    <li className = 'memories-list' ><MemoryList memories = {this.props.memories.memories} /></li>
+                    <li className = 'memories-list-edit'><CreateMemory state={this.state} memorySubmit={this.handleChildSubmit} /></li>
                     <li className = 'journal' >Journal</li>
                 </ul>
                 
@@ -171,7 +167,8 @@ const mapStateToProps = (state) =>{
         skills: state.skills,
         characters: state.characters,
         marks: state.marks,
-        resources: state.resources
+        resources: state.resources,
+        memories: state.memories
     }
 }
 
@@ -183,7 +180,8 @@ const mapDispatchToProps =  (dispatch) => {
         getSkills: (immortal_id) => dispatch(getSkills(immortal_id)),
         getCharacters: (immortal_id) => dispatch(getCharacters(immortal_id)),
         getMarks: (immortal_id) => dispatch(getMarks(immortal_id)),
-        getResources: (immortal_id) => dispatch(getResources(immortal_id))
+        getResources: (immortal_id) => dispatch(getResources(immortal_id)),
+        getMemories: (immortal_id) => dispatch(getMemories(immortal_id))
     }
 }
 

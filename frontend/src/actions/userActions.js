@@ -43,6 +43,7 @@ export const createSession = (userData) => {
             }
         }
         fetch(LOCALURL + 'login', {
+            credentials: 'same-origin', 
             method: 'POST',
             headers: {
             "Accept": "application/json",
@@ -68,10 +69,17 @@ export const createSession = (userData) => {
 export const destroySession = () =>{
     return dispatch => {
         fetch (LOCALURL + 'logout')
-        .then(resp => resp.json)
+        .then(resp => resp.json())
         .then(logoutData =>{
             dispatch({type: "DESTROY_SESSION", logoutData})
         })
     }
 }
 
+export const checkSession = () => {
+    return dispatch => {
+        fetch(LOCALURL + 'logged_in', { credentials: 'same-origin' })
+        .then(resp => resp.json())
+        .then(logged_in => console.log(logged_in))
+    }
+}

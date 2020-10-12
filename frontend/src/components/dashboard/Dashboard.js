@@ -2,10 +2,15 @@ import React, { Component } from 'react'
 import ImmortalList from '../immortals/ImmortalList'
 import { connect } from 'react-redux'
 import { getImmortals } from '../../actions/ImmortalActions'
+import { checkSession } from '../../actions/userActions'
  
 export class Dashboard extends Component {
     state = {
         current_user:''
+    }
+
+    componentDidMount(){
+        this.props.checkSession()
     }
     
     componentDidUpdate(){
@@ -55,7 +60,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps =  (dispatch) => {
     return{
-        getImmortals: (user_id) => dispatch(getImmortals(user_id))
+        getImmortals: (user_id) => dispatch(getImmortals(user_id)),
+        checkSession: () => dispatch(checkSession())
     }
 }
 

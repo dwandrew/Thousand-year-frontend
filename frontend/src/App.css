@@ -33,6 +33,7 @@ textarea {
 input {
   width: 98%;
   max-width: 98%;
+  font-family: cursive;
 }
 
 #top-title{
@@ -127,7 +128,7 @@ button:active{
 .immortal-list > li{
 border: solid 1px black;
 text-align: center;
-background-color: rgb(175, 9, 9);
+background-color: rgb(145, 9, 9);
 border-radius: 5px;
 overflow: auto;
 width: 95%;
@@ -146,6 +147,7 @@ box-shadow: 5px 5px 5px grey;
     max-width: 25vw;
     height: fit-content;
     max-height: 500px;
+    text-align: center;
    
 }
 
@@ -153,7 +155,7 @@ box-shadow: 5px 5px 5px grey;
 #immortal-details-list {
   display: inline-grid;
   grid-template-columns: repeat(5, 1fr);
-  width: 100vw;
+  width: 97vw;
   grid-gap: 10px;
   list-style-type: none;
   margin: 0;
@@ -165,7 +167,7 @@ box-shadow: 5px 5px 5px grey;
   display: inline-grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 2fr 1fr;
-  width: 95%;
+  width: 97vw;
   grid-gap: 10px;
   list-style-type: none;
   margin: 0;
@@ -176,7 +178,7 @@ box-shadow: 5px 5px 5px grey;
 .immortal-base-info{
   text-align: center;
   border: black 1px solid;
-  margin: 10px;
+  margin: 10px 0px;
   padding: 5px;
 }
 
@@ -186,6 +188,8 @@ box-shadow: 5px 5px 5px grey;
   height: 80%;
   overflow: auto;
   list-style-type: none;
+  border: solid 1px black;
+  padding: 5px;
 }
 
 .skills-list-edit{
@@ -198,6 +202,8 @@ box-shadow: 5px 5px 5px grey;
   height: 80%;
   overflow: auto;
   list-style-type: none;
+  border: solid 1px black;
+  padding: 5px;
 }
 
 .characters-list-edit {
@@ -210,6 +216,8 @@ box-shadow: 5px 5px 5px grey;
   height: 80%;
   overflow: auto;
   list-style-type: none;
+  border: solid 1px black;
+  padding: 5px;
 }
 
 .mark-list-edit{
@@ -222,9 +230,20 @@ box-shadow: 5px 5px 5px grey;
   height: 80%;
   overflow: auto;
   list-style-type: none;
+  border: solid 1px black;
+  padding: 5px;
 }
 
 .resource-list-edit{
   grid-column: 4 / 5;
   grid-row: 2;
+}
+
+.memories-list {
+  grid-column: 5;
+  height: 80%;
+  overflow: auto;
+  list-style-type: none;
+  border: solid 1px black;
+  padding: 5px;
 }

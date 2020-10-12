@@ -78,8 +78,8 @@ export class CreateMark extends Component {
             <input type= 'text' name= 'description' value= {this.state.description} onChange = {this.handleChange} placeholder = "enter mark description"/>
             <br/>
             <button type='submit'>{this.state.editing ? "Edit Mark" : "Add Mark"}</button>
-            <button onClick = {this.deleteMark}> Delete Mark </button>
             </form>
+            <button onClick = {this.deleteMark}> Delete Mark </button>
         </div>
         )
 

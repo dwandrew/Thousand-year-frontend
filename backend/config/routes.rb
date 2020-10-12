@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :experiences
+  resources :memories
   resources :resources
   resources :marks
   resources :characters
@@ -18,6 +20,14 @@ Rails.application.routes.draw do
 
   resources :immortals do
     resources :resources, only: [:create, :show, :index, :destroy]
+  end
+
+  resources :immortals do
+    resources :memories, only: [:create, :show, :index, :destroy]
+  end
+
+  resources :memories do 
+    resources :experiences, only: [:create, :index, :show, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
