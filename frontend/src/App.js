@@ -15,7 +15,7 @@ function App() {
       <div className="App">
         <Navbar/>
         <div className='core-content'>
-        <h1>Thousand Year Chonicler</h1>
+        <h1 id= 'top-title'>Thousand Year Chonicler</h1>
         <Switch>
           <Route exact path='/' component = {Dashboard}/>
           <Route exact path='/immortals/:id' component = {ImmortalDetails}/>

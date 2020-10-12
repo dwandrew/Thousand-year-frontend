@@ -88,9 +88,11 @@ export class ImmortalDetails extends Component {
             if (!this.state.editing){
                 content = 
                 <div id={id} className= 'immortal-details'>
+                    <div class = 'immortal-base-info'>
                     <h3>{this.props.immortal.name}</h3>
                     <p>{this.props.immortal.description}</p>
                     <button onClick = {this.handleEdit}>Edit Immortal</button>
+                    </div>
                     <ul id= 'immortal-details-list'>
         
                         <li  className='skills-list'><SkillList skills={this.props.skills.skills}/></li>
@@ -116,7 +118,9 @@ export class ImmortalDetails extends Component {
                 </div>}
             else {
                 content = <div className = 'immortal-details-edit'>
+                    <div class = 'immortal-base-info'>
                     <ImmortalEdit ceaseEditing = {this.ceaseEditing} state= {this.state}/>
+                    </div>
                     <ul id= 'immortal-details-edit-list'>
                     <li className='skills-list' ><SkillList skills={this.props.skills.skills} /></li>
                     <li className='skills-list-edit'><CreateSkill state = {this.state} skillSubmit={this.handleChildSubmit}/></li>

@@ -37,9 +37,9 @@ export class Dashboard extends Component {
             </div>)
         }
         else { return (
-        <div>
+        <div id = 'no-immortals'>
             <p>
-                Log In to View Immortals
+                Sign In to View Immortals
             </p>
         </div>
         )}

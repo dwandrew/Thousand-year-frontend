@@ -11,7 +11,7 @@ export class SingedInLinks extends Component {
     render(){
     return (
             <ul className = 'navbar'>
-                <li><NavLink to='/'>Dash</NavLink> </li>
+                <li><NavLink to='/'>Home</NavLink> </li>
                 <li><NavLink to='/create'> New Chronicle </NavLink> </li>
                 <li><NavLink to='/'> Current Chronicles </NavLink> </li>
                 <li><NavLink to='/' onClick={this.logout}> Logout </NavLink> </li>
