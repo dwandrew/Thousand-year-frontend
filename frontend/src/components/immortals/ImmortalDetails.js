@@ -125,16 +125,16 @@ export class ImmortalDetails extends Component {
                     <ImmortalEdit ceaseEditing = {this.ceaseEditing} state= {this.state}/>
                     </div>
                     <ul id= 'immortal-details-edit-list'>
-                    <li className='skills-list' ><SkillList skills={this.props.skills.skills} /></li>
-                    <li className='skills-list-edit'><CreateSkill state = {this.state} skillSubmit={this.handleChildSubmit}/></li>
-                    <li className = 'characters-list' ><CharacterList characters = {this.props.characters.characters}/></li>
-                    <li className = 'characters-list-edit'><CreateCharacter state = {this.state} characterSubmit={this.handleChildSubmit}/></li>
-                    <li className='mark-list' ><MarkList marks = {this.props.marks.marks}/></li>
-                    <li className='mark-list-edit'><CreateMark state = {this.state} markSubmit={this.handleChildSubmit}/></li>
-                    <li className = 'resource-list' ><ResourceList resources = {this.props.resources.resources}/></li>
-                    <li className = 'resource-list-edit'><CreateResource state = {this.state} resourceSubmit={this.handleChildSubmit}/></li>
-                    <li className = 'memories-list' ><MemoryList memories = {this.props.memories.memories}/></li>
-                    <li className = 'memories-list-edit'><CreateMemory state={this.state} memorySubmit={this.handleChildSubmit} /></li>
+                    <li className='skills-list-edit' ><SkillList skills={this.props.skills.skills} /></li>
+                    <li className='skills-list-form'><CreateSkill state = {this.state} skillSubmit={this.handleChildSubmit}/></li>
+                    <li className = 'characters-list-edit' ><CharacterList characters = {this.props.characters.characters}/></li>
+                    <li className = 'characters-list-form'><CreateCharacter state = {this.state} characterSubmit={this.handleChildSubmit}/></li>
+                    <li className='mark-list-edit' ><MarkList marks = {this.props.marks.marks}/></li>
+                    <li className='mark-list-form'><CreateMark state = {this.state} markSubmit={this.handleChildSubmit}/></li>
+                    <li className = 'resource-list-edit' ><ResourceList resources = {this.props.resources.resources}/></li>
+                    <li className = 'resource-list-form'><CreateResource state = {this.state} resourceSubmit={this.handleChildSubmit}/></li>
+                    <li className = 'memories-list-edit' ><MemoryList memories = {this.props.memories.memories}/></li>
+                    <li className = 'memories-list-form'><CreateMemory state={this.state} memorySubmit={this.handleChildSubmit} /></li>
                     <li className = 'journal' >Journal</li>
                 </ul>
                 

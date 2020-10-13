@@ -55,6 +55,14 @@ button:active{
   background-color: black;
 }
 
+h3{
+  margin: 8px;
+}
+
+p {
+  margin: 5px;
+}
+
 /* NavBar css */
 .navbar{
     width: 100%;
@@ -128,7 +136,7 @@ button:active{
 .immortal-list > li{
 border: solid 1px black;
 text-align: center;
-background-color: rgb(145, 9, 9);
+background-color: rgb(165, 9, 9);
 border-radius: 5px;
 overflow: auto;
 width: 95%;
@@ -154,137 +162,159 @@ box-shadow: 5px 5px 5px grey;
 /* immortal details pages */
 #immortal-details-list {
   display: inline-grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   width: 98vw;
   grid-gap: 5px;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  height: 60vh;
+  height: 95vh;
 }
 
 #immortal-details-edit-list {
   display: inline-grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 2fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 4fr 1fr;
   width: 98vw;
   grid-gap: 5px;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  height: 60vh;
+  height: 95vh;
 }
 
 .immortal-base-info{
   text-align: center;
-  border: black 1px solid;
   margin: 10px 0px;
   padding: 5px;
+  font-weight: 700;
+  font-size: larger;
+  
 }
 
 
 .skills-list{
-  grid-column: 1 /2;
-  height: 80%;
+  grid-column: 1 ;
+  height: 95%;
   overflow: auto;
   list-style-type: none;
-  border: solid 1px black;
+
   padding: 5px;
 }
 
 .skills-list-edit{
-  grid-column: 1 /2;
+  grid-column: 1;
+  grid-row: 1;
+}
+.skills-list-form{
+  grid-column: 1;
   grid-row: 2;
 }
 
 .characters-list {
-  grid-column: 2 /3;
-  height: 80%;
+  grid-column: 2;
+  height: 95%;
   overflow: auto;
   list-style-type: none;
-  border: solid 1px black;
+
   padding: 5px;
 }
 
 .characters-list-edit {
-  grid-column: 2 /3;
+  grid-column: 2;
+  grid-row: 1;
+}
+.characters-list-form {
+  grid-column: 2;
   grid-row: 2;
 }
 
 .mark-list {
-  grid-column: 3 /4 ;
-  height: 80%;
+  grid-column: 3;
+  height: 95%;
   overflow: auto;
   list-style-type: none;
-  border: solid 1px black;
+
   padding: 5px;
 }
 
 .mark-list-edit{
-  grid-column: 3 /4 ;
+  grid-column: 3 ;
+  grid-row: 1;
+}
+.mark-list-form{
+  grid-column: 3 ;
   grid-row: 2;
 }
 
 .resource-list {
-  grid-column: 4 / 5;
-  height: 80%;
+  grid-column: 4 ;
+  height: 95%;
   overflow: auto;
   list-style-type: none;
-  border: solid 1px black;
+ 
   padding: 5px;
 }
 
 .resource-list-edit{
-  grid-column: 4 / 5;
+  grid-column: 4 ;
+  grid-row: 1;
+}
+.resource-list-form{
+  grid-column: 4 ;
   grid-row: 2;
 }
 
 .memories-list {
-  grid-column: 5;
-  height: 80%;
+  grid-column: 1 /span 2;
+  grid-row: 2 /span 2;
+  height: 95%;
   overflow: auto;
   list-style-type: none;
-  border: solid 1px black;
+
   padding: 5px;
 }
+
+.memories-list-edit{
+  grid-column: 1 /span 2;
+  grid-row: 3 /span 1;
+}
+.memories-list-form{
+  grid-column: 1 /span 2;
+  grid-row: 4;
+}
+
+
 
 /*  card css */
-.memory-card{
-  border: solid black 1px;
-  background-color: burlywood;
-  width: 95%;
-  padding: 5px;
-  margin: 2px;
-}
+.card{
 
-.character-card {
-  border: solid black 1px;
+  background-image: url(./images/clean_parchment.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: burlywood;
+  background-position: center;
   width: 95%;
   padding: 5px;
   margin: 2px;
+  text-align: center;
+  font-size: larger;
+  font-weight: 600;
+  opacity: 0.8;
 }
+.card-bloody{
 
-.mark-card{
-  border: solid black 1px;
+  background-image: url(./images/bloody_parchment.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: burlywood;
+  background-position: center;
   width: 95%;
   padding: 5px;
   margin: 2px;
-}
-
-.resource-card{
-  border: solid black 1px;
-  background-color: burlywood;
-  width: 95%;
-  padding: 5px;
-  margin: 2px;
-}
-
-.skill-card{
-  border: solid black 1px;
-  background-color: burlywood;
-  width: 95%;
-  padding: 5px;
-  margin: 2px;
+  text-align: center;
+  font-size: larger;
+  font-weight: 600;
+  opacity: 0.8;
 }

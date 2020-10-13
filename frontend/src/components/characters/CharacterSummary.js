@@ -19,7 +19,7 @@ export class CharacterSummary extends Component{
 
     return (
             <li>
-                <div key= {character.id} className = 'character-card'>
+                <div key= {character.id} className = {character.dead ? 'card-bloody ':'card'}>
                     <p>Character: {character.name}</p>
                     <p>Character is Immortal?: {character.is_immortal ? "Yes" : "No"}</p>
                     <p>Character is Dead?: {character.dead ? "Yes" : 'No'}</p>

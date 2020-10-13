@@ -1,7 +1,7 @@
 const initState = {
     memories :[],
     errors: [],
-    loading: false
+    loading: true
 }
 
 

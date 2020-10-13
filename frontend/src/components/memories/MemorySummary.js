@@ -43,7 +43,7 @@ export class MemorySummary extends Component{
         if (!this.state.editing && !this.state.addingExperience){
         return (
             <li>
-                <div key= {memory.id} className = 'memory-card'>
+                <div key= {memory.id} className = {memory.lost ? 'card-bloody' : 'card'}>
                     <h3>Memory id: { index+1 }</h3>
                     <p>Memory in diary? {memory.in_diary ? "Yes": 'No'}</p>
                     <p>Memory lost? {memory.lost ? "Yes": 'No'}</p>

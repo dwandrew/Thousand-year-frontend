@@ -11,7 +11,7 @@
         memories:[],
 
         },
-    loading: false
+    loading: true
     }
 
 
