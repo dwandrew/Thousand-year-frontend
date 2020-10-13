@@ -2,6 +2,7 @@
 
 .App{
   font-family: cursive;
+  
 }
 a:link{
   color: goldenrod;
@@ -38,7 +39,6 @@ input {
 
 #top-title{
   text-align: center;
-
 }
 #no-immortals{
   text-align: center;
@@ -55,6 +55,10 @@ button:active{
   background-color: black;
 }
 
+h1{
+  margin: 0px;
+}
+
 h3{
   margin: 8px;
 }
@@ -62,6 +66,7 @@ h3{
 p {
   margin: 5px;
 }
+
 
 /* NavBar css */
 .navbar{
