@@ -4,7 +4,7 @@ import MemorySummary from './MemorySummary'
 const MemoryList =({memories}) => {
     let listStyle = {
         listStyleType: "none",
-        padding: '5px',  
+        padding: '0px',  
     }
     if (memories && memories.length >=1){
         return (

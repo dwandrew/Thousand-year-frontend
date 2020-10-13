@@ -19,7 +19,7 @@ export class ResourceSummary extends Component{
 
     return (
             <li>
-                <div key= {resource.id} >
+                <div key= {resource.id} className= 'resource-card'>
                     <p>Resource: {resource.name}</p>
                     <p>Stationary: {resource.stationary ? "Yes" : "No"}</p>
                     <p>Lost: {resource.lost ? "Yes" : 'No'}</p>

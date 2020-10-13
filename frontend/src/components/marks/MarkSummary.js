@@ -19,7 +19,7 @@ export class MarkSummary extends Component{
 
     return (
             <li>
-                <div key= {mark.id} >
+                <div key= {mark.id} className = 'mark-card'>
                     <p>Mark: {mark.name}</p>
                     <p>Description: {mark.description}</p>
                     <button onClick = {this.handleEdit}> Edit </button>

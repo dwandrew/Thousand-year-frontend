@@ -155,8 +155,8 @@ box-shadow: 5px 5px 5px grey;
 #immortal-details-list {
   display: inline-grid;
   grid-template-columns: repeat(5, 1fr);
-  width: 97vw;
-  grid-gap: 10px;
+  width: 98vw;
+  grid-gap: 5px;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -167,8 +167,8 @@ box-shadow: 5px 5px 5px grey;
   display: inline-grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 2fr 1fr;
-  width: 97vw;
-  grid-gap: 10px;
+  width: 98vw;
+  grid-gap: 5px;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -246,4 +246,45 @@ box-shadow: 5px 5px 5px grey;
   list-style-type: none;
   border: solid 1px black;
   padding: 5px;
+}
+
+/*  card css */
+.memory-card{
+  border: solid black 1px;
+  background-color: burlywood;
+  width: 95%;
+  padding: 5px;
+  margin: 2px;
+}
+
+.character-card {
+  border: solid black 1px;
+  background-color: burlywood;
+  width: 95%;
+  padding: 5px;
+  margin: 2px;
+}
+
+.mark-card{
+  border: solid black 1px;
+  background-color: burlywood;
+  width: 95%;
+  padding: 5px;
+  margin: 2px;
+}
+
+.resource-card{
+  border: solid black 1px;
+  background-color: burlywood;
+  width: 95%;
+  padding: 5px;
+  margin: 2px;
+}
+
+.skill-card{
+  border: solid black 1px;
+  background-color: burlywood;
+  width: 95%;
+  padding: 5px;
+  margin: 2px;
 }

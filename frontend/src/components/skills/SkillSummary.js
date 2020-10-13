@@ -19,7 +19,7 @@ export class SkillSummary extends Component{
 
     return (
             <li>
-                <div key= {skill.id} >
+                <div key= {skill.id} className = 'skill-card'>
                     <p>Skill: {skill.name}</p>
                     <p>Checked: {skill.checked ? "Yes" : "No"}</p>
                     <p>Lost: {skill.lost ? "Yes" : 'No'}</p>
