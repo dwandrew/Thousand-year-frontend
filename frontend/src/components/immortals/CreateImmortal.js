@@ -43,7 +43,7 @@ export class CreateImmortal extends Component {
             </div>
         )}
         else {
-            return ( <h2>Login to create Immortals</h2>)
+            return ( <h2>Sign to create Immortals</h2>)
         }
     }
 }

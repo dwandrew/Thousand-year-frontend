@@ -71,7 +71,7 @@ export class ImmortalDetails extends Component {
             characters: this.props.characters,
             marks: this.props.marks,
             resources: this.props.resources,
-            memories: this.props.memories
+            memories: this.props.memories,
         })
     }
 
@@ -111,7 +111,7 @@ export class ImmortalDetails extends Component {
 
                         <li  className = 'resource-list' ><ResourceList resources = {this.props.resources.resources}/></li>
                         
-                        <li className = 'memories-list'> <MemoryList memories = {this.props.memories.memories} /></li>
+                        <li className = 'memories-list'> <MemoryList memories = {this.props.memories.memories} experiences = {this.props.memories.experiences}/></li>
                         
                         <li className = 'journal'>Journal</li>
                     </ul>
@@ -133,7 +133,7 @@ export class ImmortalDetails extends Component {
                     <li className='mark-list-edit'><CreateMark state = {this.state} markSubmit={this.handleChildSubmit}/></li>
                     <li className = 'resource-list' ><ResourceList resources = {this.props.resources.resources}/></li>
                     <li className = 'resource-list-edit'><CreateResource state = {this.state} resourceSubmit={this.handleChildSubmit}/></li>
-                    <li className = 'memories-list' ><MemoryList memories = {this.props.memories.memories} /></li>
+                    <li className = 'memories-list' ><MemoryList memories = {this.props.memories.memories}/></li>
                     <li className = 'memories-list-edit'><CreateMemory state={this.state} memorySubmit={this.handleChildSubmit} /></li>
                     <li className = 'journal' >Journal</li>
                 </ul>
@@ -147,7 +147,7 @@ export class ImmortalDetails extends Component {
             <h1>No Immortal Of this ID on Database</h1>
         </div>}
         }
-        else { content = <div><h1>Login to view Immortal Details</h1></div>}   
+        else { content = <div><h1>Sign In to view Immortal Details</h1></div>}   
         return (
             content
         )
@@ -168,7 +168,8 @@ const mapStateToProps = (state) =>{
         characters: state.characters,
         marks: state.marks,
         resources: state.resources,
-        memories: state.memories
+        memories: state.memories,
+
     }
 }
 

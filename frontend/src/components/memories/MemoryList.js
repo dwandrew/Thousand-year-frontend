@@ -13,7 +13,7 @@ const MemoryList =({memories}) => {
                 <ul style = {listStyle}>
                     { memories && memories.map((memory, index) => {
                         return (
-                            <MemorySummary memory = {memory} index = {index} key={memory.id} />
+                            <MemorySummary memory = {memory} index = {index} key={memory.id} experiences= {memory.experiences}/>
                         )
                     })}   
                 </ul>

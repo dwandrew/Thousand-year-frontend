@@ -1,13 +1,19 @@
 const initState = {
     memories :[],
-    errors: []
+    errors: [],
+    loading: false
 }
 
 
 const MemoryReducer = (state = initState, action) => {
     switch (action.type){
+    case 'LOADING_MEMORIES':
+        return {
+            ...state,
+            loading: false
+            }
     case "CREATE_MEMORY":
-        let newMemories = [...state.memories, action.newMemory].sort((a, b) => a.id - b.id);
+        let newMemories = [...state.memories, action.memory].sort((a, b) => a.id - b.id);
         return {...state,
                 memories: [...newMemories]}
     case 'CREATE_MEMORY_ERROR':
@@ -19,7 +25,8 @@ const MemoryReducer = (state = initState, action) => {
 
         let  memories = [...action.memories].sort((a, b) => a.id - b.id);
         return {...state,
-                memories: [...memories]
+                memories: [...memories],
+                loading: true
             }
     case "EDIT_MEMORY":
         let filtered = state.memories.filter(memory => memory.id !== action.memory.id)

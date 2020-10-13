@@ -5,6 +5,7 @@ const ExperienceList =({experiences}) => {
     let listStyle = {
         padding: '5px',  
     }
+
     if (experiences && experiences.length >=1){
         return (
             <div>
@@ -12,7 +13,7 @@ const ExperienceList =({experiences}) => {
                 <ol style = {listStyle}>
                     { experiences && experiences.map(experience => {
                         return (
-                            <ExperienceSummary experience = {experience} key={experience.id} />
+                            <ExperienceSummary experience = {experience} key={experience.id}/>
                         )
                     })}   
                 </ol>

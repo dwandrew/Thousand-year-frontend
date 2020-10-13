@@ -36,39 +36,40 @@ export class CreateExperience extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.createExperience(this.state, this.props.memory_id)
-        this.props.experienceSubmit(this.state)
         this.props.getMemories(this.props.immortal.id)
+        this.props.setParentEditState()
         this.setState({
             prompt: 0,
             description: '',
             id: ''  
         })
+        this.props.history.push('/')
         this.props.history.push('/immortals/' + this.props.immortal.id)
-
     }
 
     deleteExperience = e => {
         this.props.deleteExperience(this.state.id)
-        this.props.getExperiences(this.props.editData.memory_id)
+        this.props.getMemories(this.props.immortal.id)
         this.setState({
             prompt: 0,
             description: '',
             id: '',
             editing: !this.state.editing  
         })
-        this.props.history.push('/immortals/' + this.props.immortal.id)
+        this.props.handleParentEdit()
+        this.props.history.push('/')
+        this.props.history.push('/immortals/' + this.props.id)
     }
 
     handleEdit = (e) => {
         e.preventDefault()
         if (this.state.description !== ''){this.props.editExperience(this.state)}
-        this.props.handleParentEdit()
-        this.props.getExperiences(this.props.editData.memory_id)
+        this.props.getMemories(this.props.immortal.id)
         this.setState({
             editing: !this.state.editing
         }
         )
-        
+        this.props.handleParentEdit()
         this.props.history.push('/immortals/' + this.props.immortal.id)
     }
 

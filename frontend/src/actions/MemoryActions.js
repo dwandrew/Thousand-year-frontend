@@ -1,5 +1,10 @@
 const LOCALURL = 'http://localhost:3001/'
 
+function loadingMemories() {
+    return { type: "LOADING_MEMORIES" }
+ } 
+
+
 export const createMemory = (memoryData, id) => {
     return (dispatch) => {
         const strongParams = {
@@ -9,7 +14,7 @@ export const createMemory = (memoryData, id) => {
                 lost: memoryData.lost,
             }
         }
-        
+       
         fetch(LOCALURL + 'memories', {
             method: 'POST',
             headers: {
@@ -23,8 +28,8 @@ export const createMemory = (memoryData, id) => {
                 if(memory.errors)
                  return dispatch({type: "CREATE_MEMORY_ERROR", errors: memory.errors})
                 else{
-                let newMemory = memory.memory
-                return dispatch({type: "CREATE_MEMORY", newMemory})
+                debugger
+                return dispatch({type: "CREATE_MEMORY", memory})
                 }
             })
             .catch((errors) => {
@@ -72,7 +77,7 @@ export const editMemory = (memoryData) => {
 
 export const getMemories = (id) => {
     return (dispatch) =>{
-
+        dispatch(loadingMemories())
         fetch(LOCALURL +"immortals/" + id + '/memories')
         .then(resp => resp.json())
         .then(memories =>{

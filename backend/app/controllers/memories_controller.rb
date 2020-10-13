@@ -23,7 +23,7 @@ class MemoriesController < ApplicationController
     @memory = Memory.new(memory_params)
 
     if @memory.save
-      render json: {memory: @memory, status: 200, location: @memory}
+      render json:  @memory, include: [:experiences]
     else
       render json: {errors: @memory.errors, status: 500}
     end
@@ -33,7 +33,7 @@ class MemoriesController < ApplicationController
   # PATCH/PUT /memories/1
   def update
     if @memory.update(memory_params)
-      render json: @memory
+      render json: @memory, include: [:experiences]
     else
       puts @memory.errors.full_messages
       render json: @memory.errors, status: :unprocessable_entity
