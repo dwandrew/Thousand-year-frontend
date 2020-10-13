@@ -15,7 +15,8 @@ class ImmortalsController < ApplicationController
       status: 200, 
       skills: @immortal.skills.sort_by{|e| e.name},
       characters: @immortal.characters.sort_by{|e| e.name}, 
-      marks: @immortal.marks.sort_by{|e| e.name} 
+      marks: @immortal.marks.sort_by{|e| e.name},
+      memories: @immortal.memories.sort_by{|e| e.id} 
     }
   end
 

@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import CreateMemory from './CreateMemory'
+import ExperienceList from '../experiences/ExperienceList'
+import CreateExperience from '../experiences/CreateExperience'
 
 export class MemorySummary extends Component{
     state = {
-        editing: false
+        editing: false,
+        addingExperience: false
     }
 
     handleEdit = () => {
@@ -13,11 +16,17 @@ export class MemorySummary extends Component{
         })
     }
 
+    addExperience = () => {
+        this.setState({
+            addingExperience: !this.state.addingExperience
+        })
+
+    }
+
     render(){    
        let { memory } = this.props
        let { index } = this.props
-
-       if (!this.state.editing){
+       if (!this.state.editing && !this.state.addingExperience){
 
     return (
             <li>
@@ -25,11 +34,29 @@ export class MemorySummary extends Component{
                     <h3>Memory id: { index+1 }</h3>
                     <p>Memory in diary? {memory.in_diary ? "Yes": 'No'}</p>
                     <p>Memory lost? {memory.lost ? "Yes": 'No'}</p>
+                    <ExperienceList experiences = {memory.experiences.sort((a, b) => a.id - b.id)} />
+                    <button onClick = {this.addExperience}>Add Experience</button>
                     <button onClick = {this.handleEdit}> Edit </button>
                 </div>
             </li>
         )
     }
+
+    else if (!this.state.editing && this.state.addingExperience){
+        return (
+        <li>
+                <div key= {memory.id} >
+                    <h3>Memory id: { index+1 }</h3>
+                    <p>Memory in diary? {memory.in_diary ? "Yes": 'No'}</p>
+                    <p>Memory lost? {memory.lost ? "Yes": 'No'}</p>
+                    <ExperienceList experiences = {memory.experiences} />
+                    <CreateExperience experienceSubmit = {this.addExperience} memory_id = {memory.id} />
+                    <button onClick = {this.handleEdit}> Edit </button>
+                </div>
+            </li>
+        )
+    }
+
     else {
         return <CreateMemory editing ={this.state.editing} editData={ memory } handleParentEdit = {this.handleEdit} />
     }

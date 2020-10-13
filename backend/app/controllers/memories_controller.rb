@@ -9,7 +9,7 @@ class MemoriesController < ApplicationController
     else
       @memories = Memory.all
     end
-    render json: @memories
+    render json: @memories, include: [:experiences]
   end
 
   # GET /memories/1

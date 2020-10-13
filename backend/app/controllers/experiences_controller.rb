@@ -4,8 +4,8 @@ class ExperiencesController < ApplicationController
   # GET /experiences
   def index
     if params[:memory_id]
-      memory = Memory.find_by(params[:memory_id])
-      @experiences = memory.experiences
+      memory = Memory.find_by_id(params[:memory_id])
+      @experiences = memory.experiences.sort{|e| e.id}
     else
       @experiences = Experience.all
     end
@@ -40,6 +40,7 @@ class ExperiencesController < ApplicationController
   # DELETE /experiences/1
   def destroy
     @experience.destroy
+    render json: {message: 'successful deletion'}
   end
 
   private

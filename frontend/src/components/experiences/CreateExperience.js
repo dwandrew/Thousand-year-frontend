@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createMark, editMark, getMarks, deleteMark } from '../../actions/MarkActions'
+import { createExperience, editExperience, getExperiences, deleteExperience } from '../../actions/ExperienceActions'
+import { getMemories } from '../../actions/MemoryActions'
 import { withRouter } from 'react-router-dom'
 
 
-export class CreateMark extends Component {
+export class CreateExperience extends Component {
     state = {
-        name: '',
+        prompt: 0,
         description: '',
         editing: false, 
         id: ''
@@ -17,7 +18,7 @@ export class CreateMark extends Component {
             let {editData} = this.props
             this.setState({
                 editing: true,
-                name: editData.name,
+                prompt: editData.prompt,
                 description: editData.description,
                 id: editData.id
             })
@@ -34,34 +35,40 @@ export class CreateMark extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.createMark(this.state, this.props.immortal.id)
-        this.props.markSubmit(this.state)
+        this.props.createExperience(this.state, this.props.memory_id)
+        this.props.experienceSubmit(this.state)
+        this.props.getMemories(this.props.immortal.id)
         this.setState({
-            name: '',
-            description: ''  
+            prompt: 0,
+            description: '',
+            id: ''  
         })
         this.props.history.push('/immortals/' + this.props.immortal.id)
+
     }
 
-    deleteMark = e => {
-        this.props.deleteMark(this.state.id)
-        this.props.getMarks(this.props.immortal.id)
+    deleteExperience = e => {
+        this.props.deleteExperience(this.state.id)
+        this.props.getExperiences(this.props.editData.memory_id)
         this.setState({
-            name: '',
-            description: ''  
+            prompt: 0,
+            description: '',
+            id: '',
+            editing: !this.state.editing  
         })
         this.props.history.push('/immortals/' + this.props.immortal.id)
     }
 
     handleEdit = (e) => {
         e.preventDefault()
-        if (this.state.name !== ''){this.props.editMark(this.state)}
+        if (this.state.description !== ''){this.props.editExperience(this.state)}
         this.props.handleParentEdit()
-        this.props.getMarks(this.props.immortal.id)
+        this.props.getExperiences(this.props.editData.memory_id)
         this.setState({
             editing: !this.state.editing
         }
         )
+        
         this.props.history.push('/immortals/' + this.props.immortal.id)
     }
 
@@ -70,16 +77,16 @@ export class CreateMark extends Component {
     render(){
         return (
         <div className = "create_form">
-            <form id = 'mark_form' onSubmit = {!this.state.editing ? this.handleSubmit : this.handleEdit}>
-            <label htmlFor='name'>Mark Name</label>
-            <input type= 'text' name= 'name' value= {this.state.name} onChange = {this.handleChange} placeholder = "enter mark name"/>
+            <form id = 'experience_form' onSubmit = {!this.state.editing ? this.handleSubmit : this.handleEdit}>
+            <label htmlFor='prompt'>Experience Prompt</label>
+            <input type= 'number' name= 'prompt' value= {this.state.prompt} onChange = {this.handleChange} placeholder = "enter experience prompt"/>
             <br/>
-            <label htmlFor='decription'>Mark Description</label>
-            <input type= 'text' name= 'description' value= {this.state.description} onChange = {this.handleChange} placeholder = "enter mark description"/>
+            <label htmlFor='decription'>Experience Description</label>
+            <textarea name= 'description' value= {this.state.description} onChange = {this.handleChange} placeholder = "enter experience description"/>
             <br/>
-            <button type='submit'>{this.state.editing ? "Edit Mark" : "Add Mark"}</button>
+            <button type='submit'>{this.state.editing ? "Edit Experience" : "Add Experience"}</button>
             </form>
-            <button onClick = {this.deleteMark}> Delete Mark </button>
+            <button onClick = {this.deleteExperience}> Delete Experience </button>
         </div>
         )
 
@@ -89,17 +96,21 @@ export class CreateMark extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        immortal: state.immortal.immortal
+        immortal: state.immortal.immortal,
+        memory: state.memories.memories,
+        experiences: state.experiences.experiences
     }
 }
 
 const mapDispatchToProps = (dispatch) =>{
     return{
-        createMark: (mark, immortal_id) => dispatch(createMark(mark, immortal_id)),
-        editMark: (mark) => dispatch(editMark(mark)),
-        getMarks: (immortal_id) => dispatch(getMarks(immortal_id)),
-        deleteMark: (immortal_id) => dispatch(deleteMark(immortal_id))
+        createExperience: (experience, memory_id) => dispatch(createExperience(experience, memory_id)),
+        editExperience: (experience) => dispatch(editExperience(experience)),
+        getExperiences: (memory_id) => dispatch(getExperiences(memory_id)),
+        deleteExperience: (memory_id) => dispatch(deleteExperience(memory_id)),
+        getMemories: (immortal_id) => dispatch(getMemories(immortal_id))
+        
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateMark))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateExperience))

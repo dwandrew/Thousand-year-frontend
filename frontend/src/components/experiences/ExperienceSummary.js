@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import CreateMark from './CreateMark'
+import CreateExperience from './CreateExperience'
 
-export class MarkSummary extends Component{
+export class ExperienceSummary extends Component{
     state = {
         editing: false
     }
@@ -14,23 +14,23 @@ export class MarkSummary extends Component{
     }
 
     render(){    
-       let { mark } = this.props
+       let { experience } = this.props
        if (!this.state.editing){
 
     return (
             <li>
-                <div key= {mark.id} >
-                    <p>Mark: {mark.name}</p>
-                    <p>Description: {mark.description}</p>
+                <div key= {experience.id} >
+                    <p>Experience prompt: {experience.prompt}</p>
+                    <p>Description: {experience.description}</p>
                     <button onClick = {this.handleEdit}> Edit </button>
                 </div>
             </li>
         )
     }
     else {
-        return <CreateMark editing ={this.state.editing} editData={ mark } handleParentEdit = {this.handleEdit} />
+        return <CreateExperience editing ={this.state.editing} editData={ experience } handleParentEdit = {this.handleEdit} />
     }
     }
 }
 
-export default connect()(MarkSummary)
+export default connect()(ExperienceSummary)

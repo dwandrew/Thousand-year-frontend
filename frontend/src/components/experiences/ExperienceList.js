@@ -1,27 +1,26 @@
 import React from 'react'
-import MarkSummary from './MarkSummary'
+import ExperienceSummary from './ExperienceSummary'
 
-const MarkList =({marks}) => {
+const ExperienceList =({experiences}) => {
     let listStyle = {
-        listStyleType: "none",
         padding: '5px',  
     }
-    if (marks && marks.length >=1){
+    if (experiences && experiences.length >=1){
         return (
             <div>
-                <h3>List of Marks</h3>
-                <ul style = {listStyle}>
-                    { marks && marks.map(mark => {
+                <h3>List of Experiences</h3>
+                <ol style = {listStyle}>
+                    { experiences && experiences.map(experience => {
                         return (
-                            <MarkSummary mark = {mark} key={mark.id} />
+                            <ExperienceSummary experience = {experience} key={experience.id} />
                         )
                     })}   
-                </ul>
+                </ol>
             </div>
         )}
     else {
-        return ( <h3>No Marks</h3>)
+        return ( <h3>No experiences</h3>)
     }
 }
 
-export default MarkList
+export default ExperienceList

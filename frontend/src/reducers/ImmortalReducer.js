@@ -7,7 +7,9 @@
         id:'',
         skills: [],
         characters:[],
-        marks:[]
+        marks:[],
+        memories:[],
+
         },
     loading: false
     }
@@ -43,6 +45,7 @@ const immortalReducer = (state = initState, action) => {
 
         case "GET_IMMORTAL":
             console.log('got immortal from backend', action.immortal)
+            
             return {
                 ...state,
                 immortal: {
@@ -52,7 +55,9 @@ const immortalReducer = (state = initState, action) => {
                     id: action.immortal.immortal.id,
                     skills: [...action.immortal.skills],
                     characters: [...action.immortal.characters],
-                    marks: [...action.immortal.marks]
+                    marks: [...action.immortal.marks],
+                    memories: [...action.immortal.memories]
+                    
                 },
                 loading: true
             }
