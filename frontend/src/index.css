@@ -5,13 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(./images/parchment_paper.jpg);
-  background-color: antiquewhite;
-  background-repeat: repeat-y;
-  background-size: 100vw;
-  min-height: 100vh;
-  background-position: bottom;
-
 }
 
 code {

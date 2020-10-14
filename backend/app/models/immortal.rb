@@ -6,4 +6,5 @@ class Immortal < ApplicationRecord
     has_many :marks
     has_many :resources
     has_many :memories
+    has_many :journals
 end

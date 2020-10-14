@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :journals
   resources :experiences
   resources :memories
   resources :resources
@@ -24,6 +25,10 @@ Rails.application.routes.draw do
 
   resources :immortals do
     resources :memories, only: [:create, :show, :index, :destroy]
+  end
+  
+  resources :immortals do
+    resources :journals, only: [:create, :show, :index, :destroy]
   end
 
   resources :memories do 

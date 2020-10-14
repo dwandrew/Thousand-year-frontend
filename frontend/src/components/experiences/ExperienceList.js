@@ -3,7 +3,7 @@ import ExperienceSummary from './ExperienceSummary'
 
 const ExperienceList =({experiences}) => {
     let listStyle = {
-        padding: '13px',  
+        margin: '15px',  
     }
 
     if (experiences && experiences.length >=1){

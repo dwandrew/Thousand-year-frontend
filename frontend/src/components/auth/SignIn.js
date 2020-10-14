@@ -27,7 +27,7 @@ export class SignIn extends Component {
 
     render() {
         return (
-            <div>
+            <div className= 'sign-in-up'>
                 <h2>Sign In</h2>
                 <form className = "Sign_In_Form" onSubmit ={this.handleSubmit}>
                     <label htmlFor="username">Username</label>

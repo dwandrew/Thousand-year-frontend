@@ -29,7 +29,7 @@ export class CreateImmortal extends Component {
 
 
     render() {
-        if (this.props.user.logged_in){
+        if (this.props.logged_in){
         return (
             <div className = "create_form">
                 <h2>Create New Immortal</h2>
@@ -50,7 +50,8 @@ export class CreateImmortal extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.auth.user}
+        user: state.auth.user,
+        logged_in: state.auth.logged_in}
 }
 
 const mapDispatchToProps = (dispatch) => {

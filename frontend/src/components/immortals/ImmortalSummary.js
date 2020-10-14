@@ -6,10 +6,12 @@ export const ImmortalSummary = ({immortal}) => {
 
         return (
             <li>
+                <Link to={"/immortals/" + immortal.id}>
                 <div key= {immortal.id} className="immortal-card">
-                <h4><Link to={"/immortals/" + immortal.id}> {immortal.name}</Link></h4>
-                <p> {immortal.description}</p>
+                <h4 className = "immortal-name"> {immortal.name}</h4>
+                <p className = 'immortal-description'> {immortal.description}</p>
                 </div>
+                </Link>
             </li>
         )
 }

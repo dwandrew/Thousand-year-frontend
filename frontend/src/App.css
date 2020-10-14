@@ -4,12 +4,27 @@
   font-family: cursive;
   
 }
+html{
+  background-image: url(./images/open_book.jpg);
+  background-position: bottom;
+  background-size: stretch;
+}
+
+#root{
+  background-image: url(./images/open_book.jpg);
+  background-color: peachpuff;
+  background-repeat: repeat;
+  background-position: bottom;
+
+}
 a:link{
   color: goldenrod;
+  text-decoration: none;
 }
 
 a:visited{
   color: goldenrod;
+  text-decoration: none;
 }
 
 a:hover{
@@ -105,6 +120,22 @@ p {
     background-color: darkred;
   }
 
+/* Dashboard  */
+
+
+
+/* sign in and sign up css */
+
+.sign-in-up {
+  display: block;
+  width: 33%;
+  text-align: center;
+  font-size: larger;
+  font-weight: 700;
+  margin: auto;
+  padding: 10px;
+}
+
  /* Core content css  */
 
 .core-content{
@@ -127,15 +158,6 @@ p {
   margin: 0px
 }
 
-#list-of-immortals{
-  list-style-type: none;
-  background-color: rgb(175, 9, 9);
-  border: black 1px solid;
-  text-align: center;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px grey;
-  
-}
   
 /* immortal display cards */
 .immortal-list > li{
@@ -149,6 +171,22 @@ height: 95%;
 padding: 5px;
 box-shadow: 5px 5px 5px grey;
 }
+
+.immortal-name{
+  font-weight: 700;
+  font-size: larger;
+}
+
+.immortal-description{
+  color: black;
+  font-size: larger;
+  text-decoration: none;
+}
+
+.immortal-list > li:hover{
+  background-color: rgb(109, 0, 0);
+}
+
 
 /* forms Css */
 
@@ -294,7 +332,6 @@ box-shadow: 5px 5px 5px grey;
 
 /*  card css */
 .card{
-
   background-image: url(./images/clean_parchment.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -309,7 +346,6 @@ box-shadow: 5px 5px 5px grey;
   opacity: 0.8;
 }
 .card-bloody{
-
   background-image: url(./images/bloody_parchment.jpg);
   background-repeat: no-repeat;
   background-size: cover;
