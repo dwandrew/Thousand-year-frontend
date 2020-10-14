@@ -9,7 +9,8 @@ export const createImmortal = (immortal, user_id) => {
         const strongParams = {
             immortal: {
                 name: immortal.name,
-                description: immortal.description
+                description: immortal.description,
+                publish_journal: false
             },
             errors: ""
 
@@ -55,6 +56,20 @@ export const getImmortals = (user_id) => {
     }
 }
 
+export const getAllPublishedImmortals = () => {
+    return (dispatch) => {
+        dispatch(loadingImmortal())
+        fetch(LOCALURL + '/immortals/published')
+        .then(resp => resp.json())
+        .then(immortals => {
+        if(immortals.status === 200){
+            let list = immortals.immortals
+            debugger
+           dispatch({ type: "GET_IMMORTALS", list})}
+        })
+    }
+}
+
 export const getImmortal = (immortalId) => {
     return(dispatch) => {
         dispatch(loadingImmortal())
@@ -77,7 +92,8 @@ export const editImmortal = (immortalData) => {
         let strongParams ={
             immortal:{
                 name: immortalData.name,
-                description: immortalData.description
+                description: immortalData.description,
+                publish_journal: immortalData.publish_journal
             }
 
         }

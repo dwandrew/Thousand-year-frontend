@@ -40,7 +40,8 @@ export class ImmortalDetails extends Component {
         characters:[],
         marks:[],
         memories:[],
-        journals:[]
+        journals:[],
+        publish_journal: false
     }
 
     componentDidMount(){
@@ -68,6 +69,7 @@ export class ImmortalDetails extends Component {
     }
 
     handleEdit = (e) =>{
+
         this.setState({
             editing: true,
             name: this.props.immortal.name,
@@ -78,7 +80,8 @@ export class ImmortalDetails extends Component {
             marks: this.props.marks,
             resources: this.props.resources,
             memories: this.props.memories,
-            journals: this.props.journals
+            journals: this.props.journals,
+            publish_journal: this.props.immortal.publish_journal
         })
     }
 
@@ -105,6 +108,7 @@ export class ImmortalDetails extends Component {
                     <div className = 'immortal-base-info'>
                     <h3>{this.props.immortal.name}</h3>
                     <p>{this.props.immortal.description}</p>
+                    <p>{this.props.immortal.publish_journal ? "Journal Published" : 'Journal Not Published'}</p>
                     <button onClick = {this.handleEdit}>Edit Immortal</button>
                     <button onClick = {this.handleDelete}>Delete Immortal</button>
                     </div>
@@ -170,7 +174,8 @@ const mapStateToProps = (state) =>{
             description: state.immortal.immortal.description,
             id: state.immortal.immortal.id,
             user_id:state.immortal.immortal.user_id,
-            skills: [...state.immortal.immortal.skills]
+            skills: [...state.immortal.immortal.skills],
+            publish_journal: state.immortal.immortal.publish_journal
         },
         skills: state.skills,
         characters: state.characters,

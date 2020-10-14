@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get '/immortals/published', to: 'immortals#published'
+
   resources :journals
   resources :experiences
   resources :memories
@@ -39,6 +42,7 @@ Rails.application.routes.draw do
   post '/login',    to: 'sessions#create'
   get '/logout',   to: 'sessions#destroy'
   get '/logged_in', to: 'sessions#is_logged_in?'
+
   resources :users, only: [:create, :show, :index] do 
     resources :items, only: [:create, :show, :index, :destroy]
   end

@@ -3,9 +3,25 @@ class ImmortalsController < ApplicationController
 
   # GET /immortals
   def index
+    if params[:user_id]
     @user = User.find(params[:user_id])
     @immortals = @user.immortals
+    else
+      @immortals = Immortal.all
+    end
     render json: {immortals: @immortals.sort_by{|e| e.name}, status: 200}
+  end
+
+  # GET/immortals/published
+
+  def published
+    immortals = Immortal.all
+    @immortals = immortals.filter{|immortal| immortal.publish_journal == true}
+    @journals = @immortals.map{|immortal| immortal.journals}
+    render json: {
+      immortals: @immortals,
+      journals: @journals,
+      status: 200}
   end
 
   # GET /immortals/1
@@ -56,6 +72,6 @@ class ImmortalsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def immortal_params
-      params.require(:immortal).permit(:name, :description)
+      params.require(:immortal).permit(:name, :description, :publish_journal)
     end
 end

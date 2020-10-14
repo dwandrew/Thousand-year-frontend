@@ -1,7 +1,7 @@
 import React from 'react'
 import ImmortalSummary from './ImmortalSummary'
 
-const ImmortalList =({user_id, immortals}) => {
+const ImmortalList =({ immortals }) => {
     if(immortals && immortals.length >= 1){
         return (
             <div>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ImmortalList from '../immortals/ImmortalList'
 import { connect } from 'react-redux'
-import { getImmortals } from '../../actions/ImmortalActions'
+import { getImmortals, getAllPublishedImmortals } from '../../actions/ImmortalActions'
+import PublishedJournals from '../journals/PublishedJournals'
 import { checkSession } from '../../actions/userActions'
  
 export class Dashboard extends Component {
@@ -10,7 +11,7 @@ export class Dashboard extends Component {
     }
 
     componentDidMount(){
-        this.props.checkSession()
+        this.props.getAllPublishedImmortals()
     }
     
     componentDidUpdate(){
@@ -26,8 +27,9 @@ export class Dashboard extends Component {
     
     render() {
 
-        const immortals = this.props.immortal.immortals
+       
         if (this.props.auth.logged_in && this.props.immortal.loading ){
+        const immortals = this.props.immortal.immortals
         let user_id =  this.props.auth.user.user.id
         return ( 
         <div className = "dashboard">
@@ -41,10 +43,25 @@ export class Dashboard extends Component {
                 <p>Loading Content....</p>
             </div>)
         }
-        else { return (
+        else { 
+            const immortals = this.props.immortal.immortals
+            if(immortals.length>=1){
+                debugger
+                return(
+                    <div className= 'published-immortals-list'>
+                        <p>
+                            Sign In to View Immortals and Create own immortals
+                        </p>
+            
+                        <PublishedJournals immortals = {immortals} />
+                    </div>
+
+                )
+            }
+            return (
         <div id = 'no-immortals'>
             <p>
-                Sign In to View Immortals
+                Sign In to View Immortals and Create own immortals
             </p>
         </div>
         )}
@@ -61,6 +78,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps =  (dispatch) => {
     return{
         getImmortals: (user_id) => dispatch(getImmortals(user_id)),
+        getAllPublishedImmortals: () => dispatch(getAllPublishedImmortals()),
         checkSession: () => dispatch(checkSession())
     }
 }

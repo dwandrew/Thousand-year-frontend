@@ -28,7 +28,7 @@ export const createMemory = (memoryData, id) => {
                 if(memory.errors)
                  return dispatch({type: "CREATE_MEMORY_ERROR", errors: memory.errors})
                 else{
-                debugger
+
                 return dispatch({type: "CREATE_MEMORY", memory})
                 }
             })
