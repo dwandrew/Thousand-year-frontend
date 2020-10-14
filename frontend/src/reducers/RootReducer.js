@@ -7,6 +7,7 @@ import ResourceReducer from './ResourceReducer'
 import MemoryReducer from './MemoryReducer'
 import ExperienceReducer from './ExperienceReducer'
 import { combineReducers } from 'redux'
+import JournalReducer from './JournalReducer'
 
 
 
@@ -18,7 +19,8 @@ const rootReducer =  combineReducers ({
     marks: MarkReducer,
     resources: ResourceReducer,
     memories: MemoryReducer,
-    experiences: ExperienceReducer
+    experiences: ExperienceReducer,
+    journals: JournalReducer,
 })
 
 

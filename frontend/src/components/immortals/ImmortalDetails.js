@@ -20,6 +20,10 @@ import ResourceList from '../resources/ResourceList'
 import { getMemories } from '../../actions/MemoryActions'
 import CreateMemory from '../memories/CreateMemory'
 import MemoryList from '../memories/MemoryList'
+//Importing Journal Information
+import { getJournals } from '../../actions/JournalActions'
+import CreateJournal from '../journals/CreateJournal'
+import JournalList from '../journals/JournalList'
 
 import { connect } from 'react-redux'
 import ImmortalEdit from './ImmortalEdit'
@@ -36,6 +40,7 @@ export class ImmortalDetails extends Component {
         characters:[],
         marks:[],
         memories:[],
+        journals:[]
     }
 
     componentDidMount(){
@@ -46,6 +51,7 @@ export class ImmortalDetails extends Component {
         this.props.getMarks(id)
         this.props.getResources(id)
         this.props.getMemories(id)
+        this.props.getJournals(id)
     }
 
     handleDelete = (e) =>{
@@ -72,6 +78,7 @@ export class ImmortalDetails extends Component {
             marks: this.props.marks,
             resources: this.props.resources,
             memories: this.props.memories,
+            journals: this.props.journals
         })
     }
 
@@ -111,9 +118,9 @@ export class ImmortalDetails extends Component {
 
                         <li  className = 'resource-list' ><ResourceList resources = {this.props.resources.resources}/></li>
                         
-                        <li className = 'memories-list'> <MemoryList memories = {this.props.memories.memories} experiences = {this.props.memories.experiences}/></li>
+                        <li className = 'memories-list'> <MemoryList memories = {this.props.memories.memories} /></li>
                         
-                        <li className = 'journal'>Journal</li>
+                        <li className = 'journal-list'><JournalList journals= {this.props.journals.journals}/></li>
                     </ul>
                     
                     
@@ -135,7 +142,8 @@ export class ImmortalDetails extends Component {
                     <li className = 'resource-list-form'><CreateResource state = {this.state} resourceSubmit={this.handleChildSubmit}/></li>
                     <li className = 'memories-list-edit' ><MemoryList memories = {this.props.memories.memories}/></li>
                     <li className = 'memories-list-form'><CreateMemory state={this.state} memorySubmit={this.handleChildSubmit} /></li>
-                    <li className = 'journal' >Journal</li>
+                    <li className = 'journal-list-edit'><JournalList journals= {this.props.journals.journals}/></li>
+                    <li className = 'journal-list-form'><CreateJournal state={this.state} journalSubmit={this.handleChildSubmit} /></li>
                 </ul>
                 
                 </div>
@@ -169,6 +177,7 @@ const mapStateToProps = (state) =>{
         marks: state.marks,
         resources: state.resources,
         memories: state.memories,
+        journals: state.journals
 
     }
 }
@@ -182,7 +191,8 @@ const mapDispatchToProps =  (dispatch) => {
         getCharacters: (immortal_id) => dispatch(getCharacters(immortal_id)),
         getMarks: (immortal_id) => dispatch(getMarks(immortal_id)),
         getResources: (immortal_id) => dispatch(getResources(immortal_id)),
-        getMemories: (immortal_id) => dispatch(getMemories(immortal_id))
+        getMemories: (immortal_id) => dispatch(getMemories(immortal_id)),
+        getJournals: (immortal_id) => dispatch(getJournals(immortal_id))
     }
 }
 

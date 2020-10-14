@@ -195,11 +195,14 @@ box-shadow: 5px 5px 5px grey;
     margin: 5px;
     padding: 10px;
     box-shadow: 10px 10px 10px grey;
-    max-width: 25vw;
+    max-width: 100%;
     height: fit-content;
     max-height: 500px;
     text-align: center;
-   
+}
+
+#journal_form textarea{
+  height: 91px;
 }
 
 /* immortal details pages */
@@ -315,7 +318,6 @@ box-shadow: 5px 5px 5px grey;
   height: 95%;
   overflow: auto;
   list-style-type: none;
-
   padding: 5px;
 }
 
@@ -325,6 +327,25 @@ box-shadow: 5px 5px 5px grey;
 }
 .memories-list-form{
   grid-column: 1 /span 2;
+  grid-row: 4;
+}
+
+.journal-list {
+  grid-column: 3 /span 2;
+  grid-row: 2 /span 2;
+  height: 95%;
+  overflow: auto;
+  list-style-type: none;
+  padding: 5px;
+}
+
+.journal-list-edit{
+  grid-column: 3 /span 2;
+  grid-row: 3 /span 1;
+}
+.journal-list-form{
+  width: 100%;
+  grid-column: 3 /span 2;
   grid-row: 4;
 }
 

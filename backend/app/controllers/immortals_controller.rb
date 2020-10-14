@@ -17,8 +17,8 @@ class ImmortalsController < ApplicationController
       characters: @immortal.characters.sort_by{|e| e.name}, 
       marks: @immortal.marks.sort_by{|e| e.name},
       memories: @immortal.memories.sort_by{|e| e.id},
-      journals: @immortal.journals.sort_by{|e| e.id}} 
-    }
+      journals: @immortal.journals.sort_by{|e| e.id}
+    } 
   end
 
   # POST /immortals

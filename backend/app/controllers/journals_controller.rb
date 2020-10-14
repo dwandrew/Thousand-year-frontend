@@ -8,7 +8,7 @@ class JournalsController < ApplicationController
       @journals = immortal.journals
     else
       @journals = Journal.all
-    else
+    end
     render json: @journals
   end
 
@@ -22,7 +22,7 @@ class JournalsController < ApplicationController
     @journal = Journal.new(journal_params)
 
     if @journal.save
-      render json: {journal :@journal, status: 200, location: @journal}
+      render json: {journal: @journal, status: 200, location: @journal}
     else
       render json: {errors: @journal.errors, status: 500}
     end
@@ -51,6 +51,6 @@ class JournalsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def journal_params
-      params.require(:journal).permit(:immortal_id, :entry, :published)
+      params.require(:journal).permit(:immortal_id, :entry)
     end
 end
