@@ -65,10 +65,14 @@ button {
   padding: 5px;
   border-radius: 5px;
 }
+button:hover {
+  background-color: rgb(201, 0, 0);
+}
 
 button:active{
   background-color: black;
 }
+
 
 h1{
   margin: 0px;
