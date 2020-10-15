@@ -6,6 +6,7 @@ import ImmortalDetails from './components/immortals/ImmortalDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateImmortal from './components/immortals/CreateImmortal'
+import Instructions from './components/dashboard/Instructions'
 import  {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 
@@ -19,6 +20,7 @@ function App() {
         <Switch>
           <Route exact path='/' component = {Dashboard}/>
           <Route exact path='/immortals/:id' component = {ImmortalDetails}/>
+          <Route exact path='/instructions' component= {Instructions}/>
           <Route exact path='/signin' component = {SignIn}/>
           <Route exact path='/signUp' component = {SignUp}/>
           <Route exact path='/create' component = {CreateImmortal}/>

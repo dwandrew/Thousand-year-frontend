@@ -77,6 +77,9 @@ button:active{
 h1{
   margin: 0px;
 }
+h2{
+  text-align: center;
+}
 
 h3{
   margin: 8px;
