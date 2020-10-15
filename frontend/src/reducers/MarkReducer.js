@@ -1,10 +1,5 @@
 const initState = {
     marks :[],
-    mark: {
-        name: '',
-        immortal_id: '',
-        description: ''
-    },
     errors: []
 }
 

@@ -1,11 +1,5 @@
 const initState = {
     skills :[],
-    skill: {
-        name: '',
-        lost: false,
-        checked: false,
-        owner_id: ''
-    },
     errors: []
 }
 

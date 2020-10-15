@@ -20,8 +20,8 @@ export class ExperienceSummary extends Component{
     return (
             <li>
                 <div key= {experience.id} >
-                    <p>Experience prompt: {experience.prompt}</p>
-                    <p>Description: {experience.description}</p>
+                    <p>Experience prompt: {experience.prompt ? experience.prompt : 'none added'}</p>
+                    <p>{experience.description}</p>
                     <button onClick = {this.handleEdit}> Edit </button>
                 </div>
             </li>

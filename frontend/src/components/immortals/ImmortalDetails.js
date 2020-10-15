@@ -53,6 +53,7 @@ export class ImmortalDetails extends Component {
         this.props.getResources(id)
         this.props.getMemories(id)
         this.props.getJournals(id)
+        
     }
 
     handleDelete = (e) =>{
@@ -100,9 +101,8 @@ export class ImmortalDetails extends Component {
     const id = this.props.match.params.id
     let content
     if (this.props.auth.logged_in){
-
         if(this.props.immortal.name && this.props.auth.user.user.id === this.props.immortal.user_id){
-            if (!this.state.editing){
+            if (!this.state.editing && this.props.memories.loading){
                 content = 
                 <div id={id} className= 'immortal-details'>
                     <div className = 'immortal-base-info'>

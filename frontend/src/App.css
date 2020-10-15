@@ -268,6 +268,7 @@ box-shadow: 5px 5px 5px grey;
 .skills-list-edit{
   grid-column: 1;
   grid-row: 1;
+  overflow: auto;
 }
 .skills-list-form{
   grid-column: 1;
@@ -286,6 +287,7 @@ box-shadow: 5px 5px 5px grey;
 .characters-list-edit {
   grid-column: 2;
   grid-row: 1;
+  overflow: auto;
 }
 .characters-list-form {
   grid-column: 2;
@@ -304,6 +306,7 @@ box-shadow: 5px 5px 5px grey;
 .mark-list-edit{
   grid-column: 3 ;
   grid-row: 1;
+  overflow: auto;
 }
 .mark-list-form{
   grid-column: 3 ;
@@ -322,6 +325,7 @@ box-shadow: 5px 5px 5px grey;
 .resource-list-edit{
   grid-column: 4 ;
   grid-row: 1;
+  overflow: auto;
 }
 .resource-list-form{
   grid-column: 4 ;
@@ -340,6 +344,7 @@ box-shadow: 5px 5px 5px grey;
 .memories-list-edit{
   grid-column: 1 /span 2;
   grid-row: 3 /span 1;
+  overflow: auto;
 }
 .memories-list-form{
   grid-column: 1 /span 2;
@@ -358,6 +363,7 @@ box-shadow: 5px 5px 5px grey;
 .journal-list-edit{
   grid-column: 3 /span 2;
   grid-row: 3 /span 1;
+  overflow: auto;
 }
 .journal-list-form{
   width: 100%;

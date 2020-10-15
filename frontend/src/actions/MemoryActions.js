@@ -42,6 +42,7 @@ export const createMemory = (memoryData, id) => {
 
 export const editMemory = (memoryData) => {
     return (dispatch) =>{
+        dispatch(loadingMemories())
         const strongParams = {
             memory:{
                 immortal_id: memoryData.immortal_id,
@@ -86,11 +87,15 @@ export const getMemories = (id) => {
     }
 }
 
-export const deleteMemory = (id) =>{
-
+export const deleteMemory = (id, immortal_id, history) =>{
     return (dispatch) => {
+        dispatch(loadingMemories())
         fetch(LOCALURL + 'memories/' + id, {method: 'DELETE'})
         .then(resp => resp.json())
-        .then(resp => dispatch({type: "DELETE_MEMORY", id}))
+        .then(resp => {
+            dispatch({type: "DELETE_MEMORY", id})
+            history.push('/immortals/' + immortal_id)
+        })
     }
+
 }

@@ -1,6 +1,7 @@
 const LOCALURL = 'http://localhost:3001/'
 
-export const createExperience = (experienceData, id) => {
+export const createExperience = (experienceData, id, history, immortal_id, get_memories) => {
+    debugger
     return (dispatch) => {
         const strongParams = {
             experience:{
@@ -24,7 +25,9 @@ export const createExperience = (experienceData, id) => {
                  return dispatch({type: "CREATE_EXPERIENCE_ERROR", errors: experience.errors})
                 else{
                 let newExperience = experience.experience
-                return dispatch({type: "CREATE_EXPERIENCE", newExperience})
+                dispatch({type: "CREATE_EXPERIENCE", newExperience})
+                get_memories(immortal_id)
+                history.push('/immortals/' + immortal_id)
                 }
             })
             .catch((errors) => {
@@ -35,7 +38,7 @@ export const createExperience = (experienceData, id) => {
     }
 }
 
-export const editExperience = (experienceData) => {
+export const editExperience = (experienceData,  history, immortal_id, get_memories) => {
     return (dispatch) =>{
         const strongParams = {
             experience:{
@@ -57,9 +60,11 @@ export const editExperience = (experienceData) => {
     
                 if(experience.errors)
                  return dispatch({type: "EDIT_EXPERIENCE_ERROR", errors: experience.errors})
-                else
-                return dispatch({type: "EDIT_EXPERIENCE", experience})
-                
+                else{
+                dispatch({type: "EDIT_EXPERIENCE", experience})
+                get_memories(immortal_id)
+                history.push('/immortals/' + immortal_id)
+            }
             })
             .catch((errors) => {
                 console.log(errors)
@@ -81,11 +86,18 @@ export const getExperiences = (id) => {
     }
 }
 
-export const deleteExperience = (id) =>{
+export const deleteExperience = (id, history, immortal_id, get_memories) =>{
 
     return (dispatch) => {
         fetch(LOCALURL + 'experiences/' + id, {method: 'DELETE'})
         .then(resp => resp.json())
-        .then(resp => dispatch({type: "DELETE_EXPERIENCE", id}))
+        .then(resp => {
+            dispatch({type: "DELETE_EXPERIENCE", id})
+            get_memories(immortal_id)
+            history.push('/immortals/' + immortal_id)
+        }
+            
+            
+            )
     }
 }

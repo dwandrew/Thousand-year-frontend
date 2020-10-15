@@ -35,21 +35,17 @@ export class CreateExperience extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.createExperience(this.state, this.props.memory_id)
-        this.props.getMemories(this.props.immortal.id)
+        this.props.createExperience(this.state, this.props.memory_id, this.props.history, this.props.immortal.id, this.props.getMemories)
         this.props.setParentEditState()
         this.setState({
             prompt: 0,
             description: '',
             id: ''  
         })
-        this.props.history.push('/')
-        this.props.history.push('/immortals/' + this.props.immortal.id)
     }
 
     deleteExperience = e => {
-        this.props.deleteExperience(this.state.id)
-        this.props.getMemories(this.props.immortal.id)
+        this.props.deleteExperience(this.state.id , this.props.history, this.props.immortal.id, this.props.getMemories)
         this.setState({
             prompt: 0,
             description: '',
@@ -57,20 +53,17 @@ export class CreateExperience extends Component {
             editing: !this.state.editing  
         })
         this.props.handleParentEdit()
-        this.props.history.push('/')
-        this.props.history.push('/immortals/' + this.props.id)
     }
 
     handleEdit = (e) => {
         e.preventDefault()
-        if (this.state.description !== ''){this.props.editExperience(this.state)}
-        this.props.getMemories(this.props.immortal.id)
+        if (this.state.description !== '')
+        {this.props.editExperience(this.state, this.props.history, this.props.immortal.id, this.props.getMemories)}
         this.setState({
             editing: !this.state.editing
         }
         )
         this.props.handleParentEdit()
-        this.props.history.push('/immortals/' + this.props.immortal.id)
     }
 
 
@@ -105,10 +98,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
     return{
-        createExperience: (experience, memory_id) => dispatch(createExperience(experience, memory_id)),
-        editExperience: (experience) => dispatch(editExperience(experience)),
+        createExperience: (experience, memory_id, history, immortal_id, get_memories) => dispatch(createExperience(experience, memory_id, history, immortal_id, get_memories)),
+        editExperience: (experience, history, immortal_id, get_memories) => dispatch(editExperience(experience, history, immortal_id, get_memories)),
         getExperiences: (memory_id) => dispatch(getExperiences(memory_id)),
-        deleteExperience: (memory_id) => dispatch(deleteExperience(memory_id)),
+        deleteExperience: (memory_id, history, immortal_id, get_memories) => dispatch(deleteExperience(memory_id, history, immortal_id, get_memories)),
         getMemories: (immortal_id) => dispatch(getMemories(immortal_id))
         
     }

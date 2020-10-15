@@ -22,7 +22,6 @@ const MemoryReducer = (state = initState, action) => {
             errors: action.errors
         }
     case "GET_MEMORIES":
-
         let  memories = [...action.memories].sort((a, b) => a.id - b.id);
         return {...state,
                 memories: [...memories],
@@ -33,12 +32,14 @@ const MemoryReducer = (state = initState, action) => {
         filtered = [...filtered, action.memory].sort((a, b) => a.id - b.id);
         return {
             ...state,
-            memories: [...filtered]
+            memories: [...filtered],
+            loading: true
         }
     case "DELETE_MEMORY":
         let maintainedMemories = state.memories.filter(memory => memory.id !== action.id)
         return {
-            memories:[...maintainedMemories]
+            memories:[...maintainedMemories],
+            loading: true
         }
     default:
         return state

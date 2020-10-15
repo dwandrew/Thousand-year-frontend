@@ -57,9 +57,9 @@ export class CreateMemory extends Component {
     }
 
     deleteMemory = e => {
-
-        this.props.deleteMemory(this.state.id)
-        this.props.getMemories(this.props.immortal.id)
+        let history = this.props.history
+        let immortal_id = this.props.immortal.id
+        this.props.deleteMemory(this.state.id, immortal_id, history)
         this.setState({
             lost: false,
             in_diary: false,
@@ -67,7 +67,6 @@ export class CreateMemory extends Component {
             id: '',
             immortal_id: ''  
         })
-        this.props.history.push('/immortals/' + this.props.immortal.id)
     }
 
     handleEdit = (e) => {
@@ -117,7 +116,7 @@ const mapDispatchToProps = (dispatch) =>{
         createMemory: (Memory, immortal_id) => dispatch(createMemory(Memory, immortal_id)),
         editMemory: (Memory) => dispatch(editMemory(Memory)),
         getMemories: (immortal_id) => dispatch(getMemories(immortal_id)),
-        deleteMemory: (immortal_id) => dispatch(deleteMemory(immortal_id))
+        deleteMemory: (memory_id, immortal_id, history) => dispatch(deleteMemory(memory_id, immortal_id, history))
     }
 }
 
