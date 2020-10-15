@@ -40,7 +40,7 @@ export class MemorySummary extends Component{
        let experiences = this.props.memory.experiences
        if(this.props.memories.loading){
 
-        if (!this.state.editing && !this.state.addingExperience){
+        if (!this.state.editing && !this.state.addingExperience && experiences.length < 3){
         return (
             <li>
                 <div key= {memory.id} className = {memory.lost ? 'card-bloody' : 'card'}>
@@ -49,6 +49,20 @@ export class MemorySummary extends Component{
                     <p>Memory lost? {memory.lost ? "Yes": 'No'}</p>
                     <ExperienceList experiences = {experiences.sort((a, b) => a.id - b.id)}/>
                     <button onClick = {this.setParentEditState}>Add Experience</button>
+                    <button onClick = {this.handleEdit}> Edit Memory </button>
+                </div>
+            </li>
+        )
+    }
+
+    else if (!this.state.editing && !this.state.addingExperience && experiences.length === 3){
+        return (
+            <li>
+                <div key= {memory.id} className = {memory.lost ? 'card-bloody' : 'card'}>
+                    <h3>Memory id: { index+1 }</h3>
+                    <p>Memory in diary? {memory.in_diary ? "Yes": 'No'}</p>
+                    <p>Memory lost? {memory.lost ? "Yes": 'No'}</p>
+                    <ExperienceList experiences = {experiences.sort((a, b) => a.id - b.id)}/>
                     <button onClick = {this.handleEdit}> Edit Memory </button>
                 </div>
             </li>
