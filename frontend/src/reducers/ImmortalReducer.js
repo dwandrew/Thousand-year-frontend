@@ -12,6 +12,7 @@
         memories:[],
 
         },
+    publishedJournals: [],
     loading: true
     }
 
@@ -44,6 +45,15 @@ const immortalReducer = (state = initState, action) => {
             loading: true
         }
 
+        case "GET_PUBLISHED_IMMORTALS":
+
+            console.log('published immortals', action.publishedList)
+            return {
+                ...state,
+                immortals: [...action.publishedList[0]],
+                publishedJournals: [...action.publishedList[1]],
+                loading: true
+            }
         case "GET_IMMORTAL":
             console.log('got immortal from backend', action.immortal)
             

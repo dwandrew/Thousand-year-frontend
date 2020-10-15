@@ -80,6 +80,7 @@ h3{
 
 p {
   margin: 5px;
+  text-align: center;
 }
 
 
@@ -122,6 +123,17 @@ p {
 
 /* Dashboard  */
 
+/* published immortals on front page */
+.published-immortals-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
+  row-gap: 15px;
+}
+
+.published-journal-card{
+  text-align: center;
+}
 
 
 /* sign in and sign up css */

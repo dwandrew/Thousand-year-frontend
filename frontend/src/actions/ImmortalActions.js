@@ -63,9 +63,8 @@ export const getAllPublishedImmortals = () => {
         .then(resp => resp.json())
         .then(immortals => {
         if(immortals.status === 200){
-            let list = immortals.immortals
-            debugger
-           dispatch({ type: "GET_IMMORTALS", list})}
+            let publishedList = [immortals.immortals, immortals.journals]
+           dispatch({ type: "GET_PUBLISHED_IMMORTALS", publishedList})}
         })
     }
 }

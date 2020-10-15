@@ -46,14 +46,15 @@ export class Dashboard extends Component {
         else { 
             const immortals = this.props.immortal.immortals
             if(immortals.length>=1){
-                debugger
+                const {publishedJournals} = this.props.immortal
                 return(
-                    <div className= 'published-immortals-list'>
-                        <p>
-                            Sign In to View Immortals and Create own immortals
+                    <div >
+                        <p id = "dash-text">
+                            Sign In to View Immortals and Create own immortals <br/> Below you can see the found journals of Immortals that have been published.
                         </p>
-            
-                        <PublishedJournals immortals = {immortals} />
+                        <div >
+                            <PublishedJournals immortals = {immortals} journals={publishedJournals}/>
+                        </div>
                     </div>
 
                 )

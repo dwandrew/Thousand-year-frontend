@@ -1,7 +1,7 @@
 import React from 'react'
-import JournalSummary from './JournalSummary'
+import PublishedJournalSummary from './PublishedJournalSummary'
 
-const PublishedJournals =( {immortals, journals} ) => {
+const PublishedJournals =( {journals, immortals} ) => {
     let listStyle = {
         listStyleType: "none",
         padding: '5px',  
@@ -9,11 +9,15 @@ const PublishedJournals =( {immortals, journals} ) => {
     if (journals && journals.length >=1){
         return (
             <div>
-                <ul style={listStyle}>
-                    { journals && journals.map(journal => {
+                <ul style={listStyle} className = 'published-immortals-list'>
+                    { journals && journals.map((journal, index) => {
+                        if (journal.length >=1){
+                        let immortalName =  immortals.find(immortal => immortal.id === journal[0].immortal_id).name
                         return (
-                            <JournalSummary journal = {journal} key={journal.id} />
+                            <PublishedJournalSummary journalEntries = {journal} name={immortalName} key={index} />
                         )
+                        }
+                        return <p key={index}>No Current Journal Entries for this Immortal</p>
                     })}   
                 </ul>
             </div>
