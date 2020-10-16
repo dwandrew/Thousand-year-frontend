@@ -66,12 +66,15 @@ export const createSession = (userData) => {
         }
     }
 
-export const destroySession = () =>{
+export const destroySession = (getPublishedJournals, history) =>{
     return dispatch => {
         fetch (LOCALURL + 'logout')
         .then(resp => resp.json())
         .then(logoutData =>{
             dispatch({type: "DESTROY_SESSION", logoutData})
+            debugger
+            getPublishedJournals()
+            history.push('/')
         })
     }
 }

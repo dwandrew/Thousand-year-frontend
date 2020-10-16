@@ -6,13 +6,17 @@ const PublishedJournals =( {journals, immortals} ) => {
         listStyleType: "none",
         padding: '5px',  
     }
-    if (journals && journals.length >=1){
+    if (immortals && journals && journals.length >=1){
         return (
             <div>
                 <ul style={listStyle} className = 'published-immortals-list'>
                     { journals && journals.map((journal, index) => {
                         if (journal.length >=1){
-                        let immortalName =  immortals.find(immortal => immortal.id === journal[0].immortal_id).name
+                        let immortalName =  immortals.find(immortal => immortal.id === journal[0].immortal_id)
+                        if (immortalName !== undefined){
+                            immortalName = immortalName.name
+                        }
+                        
                         return (
                             <PublishedJournalSummary journalEntries = {journal} name={immortalName} key={index} />
                         )

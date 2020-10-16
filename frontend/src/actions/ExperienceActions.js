@@ -1,7 +1,7 @@
 const LOCALURL = 'http://localhost:3001/'
 
 export const createExperience = (experienceData, id, history, immortal_id, get_memories) => {
-    debugger
+
     return (dispatch) => {
         const strongParams = {
             experience:{
