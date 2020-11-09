@@ -1,17 +1,23 @@
 /* Whole app css */
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: small;
+}
 
 .App{
   font-family: cursive;
   
 }
 html{
-  background-image: url(./images/open_book.jpg);
+  background-image: url(./images/old-rough-and-grungy-paper-or-parchment-background-texture.jpg);
   background-position: bottom;
   background-size: stretch;
 }
 
 #root{
-  background-image: url(./images/open_book.jpg);
+  background-image: url(./images/old-rough-and-grungy-paper-or-parchment-background-texture.jpg);
   background-color: peachpuff;
   background-repeat: repeat;
   background-position: bottom;
@@ -130,6 +136,18 @@ p {
   }
 
 /* Dashboard  */
+
+/* instructions */
+
+.generation{
+  border: solid 1px black;
+  border-radius: 5px;
+  background-color: rgba(255, 239, 239, 0.6);
+  padding: 10px;
+  margin: 5px;
+
+}
+
 
 /* published immortals on front page */
 .published-immortals-list {
