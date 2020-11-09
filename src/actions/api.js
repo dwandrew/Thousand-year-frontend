@@ -1,1 +1,1 @@
-export const LOCALURL = 'https://thousand-year-backend.netlify.app'
+export const LOCALURL = 'https://thousand-year-backend.netlify.app/'
