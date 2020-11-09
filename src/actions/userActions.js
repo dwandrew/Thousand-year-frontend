@@ -1,5 +1,5 @@
 // const LOCALURL = 'http://localhost:3001/'
-import { LOCALURL } from './api'
+import { LOCALURL } from './api.js'
 
 export const createUser = (userData) => {
     return (dispatch) => {
