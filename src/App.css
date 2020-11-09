@@ -13,7 +13,7 @@ footer {
 html{
   background-image: url(./images/old-rough-and-grungy-paper-or-parchment-background-texture.jpg);
   background-position: bottom;
-  background-size: stretch;
+  background-size: cover;
 }
 
 #root{
@@ -21,6 +21,7 @@ html{
   background-color: peachpuff;
   background-repeat: repeat;
   background-position: bottom;
+  background-size: cover;
 
 }
 a:link{
