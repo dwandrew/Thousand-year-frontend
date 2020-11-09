@@ -1,4 +1,5 @@
-const LOCALURL = 'http://localhost:3001/'
+// const LOCALURL = 'http://localhost:3001/'
+import { LOCALURL } from './api'
 
 export const createMark = (markData, id) => {
     return (dispatch) => {
