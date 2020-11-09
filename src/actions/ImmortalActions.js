@@ -60,7 +60,7 @@ export const getImmortals = (user_id) => {
 export const getAllPublishedImmortals = () => {
     return (dispatch) => {
         dispatch(loadingImmortal())
-        fetch(LOCALURL + '/immortals/published')
+        fetch(LOCALURL + 'immortals/published')
         .then(resp => resp.json())
         .then(immortals => {
         if(immortals.status === 200){
