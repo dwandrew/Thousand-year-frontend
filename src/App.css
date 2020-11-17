@@ -1,6 +1,6 @@
 /* Whole app css */
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   font-size: small;
@@ -190,7 +190,7 @@ p {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 10px;
-  row-gap: 15px; 
+  row-gap: 15px;
   max-width: 95vw;
   justify-content: space-evenly;
   align-content: space-around;
@@ -281,7 +281,7 @@ box-shadow: 5px 5px 5px grey;
 
 .skills-list{
   grid-column: 1 ;
-  height: 95%;
+  height: 100%;
   overflow: auto;
   list-style-type: none;
 
@@ -300,7 +300,7 @@ box-shadow: 5px 5px 5px grey;
 
 .characters-list {
   grid-column: 2;
-  height: 95%;
+  height: 250px;
   overflow: auto;
   list-style-type: none;
 
@@ -319,7 +319,7 @@ box-shadow: 5px 5px 5px grey;
 
 .mark-list {
   grid-column: 3;
-  height: 95%;
+  height: 100%;
   overflow: auto;
   list-style-type: none;
 
@@ -338,7 +338,7 @@ box-shadow: 5px 5px 5px grey;
 
 .resource-list {
   grid-column: 4 ;
-  height: 95%;
+  height: 100%;
   overflow: auto;
   list-style-type: none;
  
@@ -358,7 +358,7 @@ box-shadow: 5px 5px 5px grey;
 .memories-list {
   grid-column: 1 /span 2;
   grid-row: 2 /span 2;
-  height: 95%;
+  height: 100%;
   overflow: auto;
   list-style-type: none;
   padding: 5px;
