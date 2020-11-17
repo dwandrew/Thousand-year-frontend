@@ -398,11 +398,11 @@ box-shadow: 5px 5px 5px grey;
 
 /*  card css */
 .card{
-  background-image: url(./images/clean_parchment.jpg);
+  /* background-image: url(./images/clean_parchment.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-color: burlywood;
-  background-position: center;
+  background-position: center; */
   width: 95%;
   padding: 5px;
   margin: 2px;
@@ -412,7 +412,7 @@ box-shadow: 5px 5px 5px grey;
   opacity: 0.8;
 }
 .card-bloody{
-  background-image: url(./images/bloody_parchment.jpg);
+  background-image: url(./images/bloody_2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-color: burlywood;
